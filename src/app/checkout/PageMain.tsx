@@ -87,180 +87,262 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 		)
 	}
 
+	// const renderMain = () => {
+	// 	return (
+	// 		<div className="flex w-full flex-col space-y-8 border-neutral-200 px-0 dark:border-neutral-700 sm:rounded-2xl sm:border sm:p-6 xl:p-8">
+	// 			<h2 className="text-3xl font-semibold lg:text-4xl">
+	// 				Confirm and payment
+	// 			</h2>
+	// 			<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
+	// 			<div>
+	// 				<div>
+	// 					<h3 className="text-2xl font-semibold">Your trip</h3>
+	// 					<NcModal
+	// 						renderTrigger={(openModal) => (
+	// 							<span
+	// 								onClick={() => openModal()}
+	// 								className="mt-1 block cursor-pointer underline lg:hidden"
+	// 							>
+	// 								View booking details
+	// 							</span>
+	// 						)}
+	// 						contentExtraClass="max-w-md"
+	// 						renderContent={renderSidebar}
+	// 						modalTitle="Booking details"
+	// 					/>
+	// 				</div>
+	// 				<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0 rtl:sm:divide-x-reverse">
+	// 					<ModalSelectDate
+	// 						renderChildren={({ openModal }) => (
+	// 							<button
+	// 								onClick={openModal}
+	// 								className="flex flex-1 justify-between gap-x-5 p-5 text-start hover:bg-neutral-50 dark:hover:bg-neutral-800"
+	// 								type="button"
+	// 							>
+	// 								<div className="flex flex-col">
+	// 									<span className="text-sm text-neutral-400">
+	// 										{T['HeroSearchForm']['Date']}
+	// 									</span>
+	// 									<span className="mt-1.5 text-lg font-semibold">
+	// 										{converSelectedDateToString([startDate, endDate])}
+	// 									</span>
+	// 								</div>
+	// 								<PencilSquareIcon className="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
+	// 							</button>
+	// 						)}
+	// 					/>
+
+	// 					<ModalSelectGuests
+	// 						renderChildren={({ openModal }) => (
+	// 							<button
+	// 								type="button"
+	// 								onClick={openModal}
+	// 								className="flex flex-1 justify-between gap-x-5 p-5 text-start hover:bg-neutral-50 dark:hover:bg-neutral-800"
+	// 							>
+	// 								<div className="flex flex-col">
+	// 									<span className="text-sm text-neutral-400">
+	// 										{T['HeroSearchForm']['Guests']}
+	// 									</span>
+	// 									<span className="mt-1.5 text-lg font-semibold">
+	// 										<span className="line-clamp-1">
+	// 											{`${(guests.guestAdults || 0) +
+	// 												(guests.guestChildren || 0)
+	// 												} Guests, ${guests.guestInfants || 0} Infants`}
+	// 										</span>
+	// 									</span>
+	// 								</div>
+	// 								<PencilSquareIcon className="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
+	// 							</button>
+	// 						)}
+	// 					/>
+	// 				</div>
+	// 			</div>
+
+	// 			<div>
+	// 				<h3 className="text-2xl font-semibold">Pay with</h3>
+	// 				<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
+
+	// 				<div className="mt-6">
+	// 					<TabGroup>
+	// 						<TabList className="my-5 flex gap-1">
+	// 							<Tab as={Fragment}>
+	// 								{({ selected }) => (
+	// 									<button
+	// 										className={`rounded-full px-4 py-1.5 focus:outline-none sm:px-6 sm:py-2.5 ${selected
+	// 												? 'bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900'
+	// 												: 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
+	// 											}`}
+	// 									>
+	// 										Paypal
+	// 									</button>
+	// 								)}
+	// 							</Tab>
+	// 							<Tab as={Fragment}>
+	// 								{({ selected }) => (
+	// 									<button
+	// 										className={`flex items-center justify-center rounded-full px-4 py-1.5 focus:outline-none sm:px-6 sm:py-2.5 ${selected
+	// 												? 'bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900'
+	// 												: 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
+	// 											}`}
+	// 									>
+	// 										<span className="mr-2.5">Credit card</span>
+	// 										<Image className="w-8" src={visaPng} alt="visa" />
+	// 										<Image
+	// 											className="w-8"
+	// 											src={mastercardPng}
+	// 											alt="mastercard"
+	// 										/>
+	// 									</button>
+	// 								)}
+	// 							</Tab>
+	// 						</TabList>
+
+	// 						<TabPanels>
+	// 							<TabPanel className="space-y-5">
+	// 								<div className="space-y-1">
+	// 									<Label>First Name</Label>
+	// 									<Input name="first_name" type="text" placeholder="Enter first name" required />
+	// 								</div>
+
+	// 								<div className="space-y-1">
+	// 									<Label>Last Name</Label>
+	// 									<Input name="last_name" type="text" placeholder="Enter last name" required />
+	// 								</div>
+
+	// 								<div className="space-y-1">
+	// 									<Label>Email</Label>
+	// 									<Input
+	// 										name="email"
+	// 										type="email"
+	// 										placeholder="example@gmail.com"
+	// 										required
+	// 									/>
+	// 									<p className="text-xs text-neutral-500">Required for voucher & invoice</p>
+	// 								</div>
+
+	// 								<div className="space-y-1">
+	// 									<Label>Phone Number</Label>
+	// 									<Input
+	// 										name="phone_number"
+	// 										type="tel"
+	// 										placeholder="+91 98765 43210"
+	// 										required
+	// 									/>
+	// 									<p className="text-xs text-neutral-500">Required for WhatsApp etc.</p>
+	// 								</div>
+
+	// 								<div className="space-y-1">
+	// 									<Label>Message</Label>
+	// 									<Textarea
+	// 										name="message"
+	// 										placeholder="Any requirements or notes for the restaurant"
+	// 									/>
+	// 									<p className="text-xs text-neutral-500">
+	// 										Requirements from client to restaurant
+	// 									</p>
+	// 								</div>
+	// 							</TabPanel>
+	// 							<TabPanel className="space-y-5">
+	// 								<div className="space-y-1">
+	// 									<Label>Email </Label>
+	// 									<Input type="email" defaultValue="example@gmail.com" />
+	// 								</div>
+	// 								<div className="space-y-1">
+	// 									<Label>Password </Label>
+	// 									<Input type="password" defaultValue="***" />
+	// 								</div>
+	// 								<div className="space-y-1">
+	// 									<Label>Messager for author </Label>
+	// 									<Textarea placeholder="..." />
+	// 									<span className="block text-sm text-neutral-500">
+	// 										Write a few sentences about yourself.
+	// 									</span>
+	// 								</div>
+	// 							</TabPanel>
+	// 						</TabPanels>
+	// 					</TabGroup>
+	// 					<div className="pt-8">
+	// 						<ButtonPrimary href={'/pay-done'}>Confirm and pay</ButtonPrimary>
+	// 					</div>
+	// 				</div>
+	// 			</div>
+	// 		</div>
+	// 	)
+	// }
 	const renderMain = () => {
 		return (
 			<div className="flex w-full flex-col space-y-8 border-neutral-200 px-0 dark:border-neutral-700 sm:rounded-2xl sm:border sm:p-6 xl:p-8">
-				<h2 className="text-3xl font-semibold lg:text-4xl">
-					Confirm and payment
-				</h2>
+				<h2 className="text-3xl font-semibold lg:text-4xl">Your Details</h2>
 				<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-				<div>
-					<div>
-						<h3 className="text-2xl font-semibold">Your trip</h3>
-						<NcModal
-							renderTrigger={(openModal) => (
-								<span
-									onClick={() => openModal()}
-									className="mt-1 block cursor-pointer underline lg:hidden"
-								>
-									View booking details
-								</span>
-							)}
-							contentExtraClass="max-w-md"
-							renderContent={renderSidebar}
-							modalTitle="Booking details"
+
+				<div className="space-y-5">
+					<div className="space-y-1">
+						<Label>First Name</Label>
+						<Input
+							name="first_name"
+							type="text"
+							placeholder="Enter first name"
+							required
 						/>
 					</div>
-					<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0 rtl:sm:divide-x-reverse">
-						<ModalSelectDate
-							renderChildren={({ openModal }) => (
-								<button
-									onClick={openModal}
-									className="flex flex-1 justify-between gap-x-5 p-5 text-start hover:bg-neutral-50 dark:hover:bg-neutral-800"
-									type="button"
-								>
-									<div className="flex flex-col">
-										<span className="text-sm text-neutral-400">
-											{T['HeroSearchForm']['Date']}
-										</span>
-										<span className="mt-1.5 text-lg font-semibold">
-											{converSelectedDateToString([startDate, endDate])}
-										</span>
-									</div>
-									<PencilSquareIcon className="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
-								</button>
-							)}
-						/>
 
-						<ModalSelectGuests
-							renderChildren={({ openModal }) => (
-								<button
-									type="button"
-									onClick={openModal}
-									className="flex flex-1 justify-between gap-x-5 p-5 text-start hover:bg-neutral-50 dark:hover:bg-neutral-800"
-								>
-									<div className="flex flex-col">
-										<span className="text-sm text-neutral-400">
-											{T['HeroSearchForm']['Guests']}
-										</span>
-										<span className="mt-1.5 text-lg font-semibold">
-											<span className="line-clamp-1">
-												{`${
-													(guests.guestAdults || 0) +
-													(guests.guestChildren || 0)
-												} Guests, ${guests.guestInfants || 0} Infants`}
-											</span>
-										</span>
-									</div>
-									<PencilSquareIcon className="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
-								</button>
-							)}
+					<div className="space-y-1">
+						<Label>Last Name</Label>
+						<Input
+							name="last_name"
+							type="text"
+							placeholder="Enter last name"
+							required
 						/>
+					</div>
+
+					<div className="space-y-1">
+						<Label>Email</Label>
+						<Input
+							name="email"
+							type="email"
+							placeholder="example@gmail.com"
+							required
+						/>
+						<p className="text-xs text-neutral-500">Required for voucher & invoice</p>
+					</div>
+
+					<div className="space-y-1">
+						<Label>Phone Number</Label>
+						<Input
+							name="phone_number"
+							type="tel"
+							placeholder="+91 98765 43210"
+							required
+						/>
+						<p className="text-xs text-neutral-500">Required for WhatsApp etc.</p>
+					</div>
+
+					<div className="space-y-1">
+						<Label>Message</Label>
+						<Textarea
+							name="message"
+							placeholder="Any requirements or notes for the restaurant"
+						/>
+						<p className="text-xs text-neutral-500">
+							Requirements from client to restaurant
+						</p>
 					</div>
 				</div>
 
-				<div>
-					<h3 className="text-2xl font-semibold">Pay with</h3>
-					<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-
-					<div className="mt-6">
-						<TabGroup>
-							<TabList className="my-5 flex gap-1">
-								<Tab as={Fragment}>
-									{({ selected }) => (
-										<button
-											className={`rounded-full px-4 py-1.5 focus:outline-none sm:px-6 sm:py-2.5 ${
-												selected
-													? 'bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900'
-													: 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
-											}`}
-										>
-											Paypal
-										</button>
-									)}
-								</Tab>
-								<Tab as={Fragment}>
-									{({ selected }) => (
-										<button
-											className={`flex items-center justify-center rounded-full px-4 py-1.5 focus:outline-none sm:px-6 sm:py-2.5 ${
-												selected
-													? 'bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900'
-													: 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
-											}`}
-										>
-											<span className="mr-2.5">Credit card</span>
-											<Image className="w-8" src={visaPng} alt="visa" />
-											<Image
-												className="w-8"
-												src={mastercardPng}
-												alt="mastercard"
-											/>
-										</button>
-									)}
-								</Tab>
-							</TabList>
-
-							<TabPanels>
-								<TabPanel className="space-y-5">
-									<div className="space-y-1">
-										<Label>Card number </Label>
-										<Input defaultValue="111 112 222 999" />
-									</div>
-									<div className="space-y-1">
-										<Label>Card holder </Label>
-										<Input defaultValue="JOHN DOE" />
-									</div>
-									<div className="flex gap-x-5">
-										<div className="flex-1 space-y-1">
-											<Label>Expiration date </Label>
-											<Input type="date" defaultValue="MM/YY" />
-										</div>
-										<div className="flex-1 space-y-1">
-											<Label>CVC </Label>
-											<Input />
-										</div>
-									</div>
-									<div className="space-y-1">
-										<Label>Messager for author </Label>
-										<Textarea placeholder="..." />
-										<span className="block text-sm text-neutral-500">
-											Write a few sentences about yourself.
-										</span>
-									</div>
-								</TabPanel>
-								<TabPanel className="space-y-5">
-									<div className="space-y-1">
-										<Label>Email </Label>
-										<Input type="email" defaultValue="example@gmail.com" />
-									</div>
-									<div className="space-y-1">
-										<Label>Password </Label>
-										<Input type="password" defaultValue="***" />
-									</div>
-									<div className="space-y-1">
-										<Label>Messager for author </Label>
-										<Textarea placeholder="..." />
-										<span className="block text-sm text-neutral-500">
-											Write a few sentences about yourself.
-										</span>
-									</div>
-								</TabPanel>
-							</TabPanels>
-						</TabGroup>
-						<div className="pt-8">
-							<ButtonPrimary href={'/pay-done'}>Confirm and pay</ButtonPrimary>
-						</div>
-					</div>
+				<div className="pt-8">
+					<ButtonPrimary href="/pay-done">Confirm and pay</ButtonPrimary>
 				</div>
 			</div>
 		)
 	}
 
+
 	return (
 		<div className={`nc-CheckOutPagePageMain ${className}`}>
 			<main className="container mb-24 mt-11 flex flex-col-reverse lg:mb-32 lg:flex-row">
 				<div className="w-full lg:w-3/5 lg:pe-10 xl:w-2/3">{renderMain()}</div>
-				<div className="hidden flex-grow lg:block">{renderSidebar()}</div>
+				{/* <div className="hidden flex-grow lg:block">{renderSidebar()}</div> */}
 			</main>
 		</div>
 	)

@@ -21,7 +21,7 @@ import T from '@/utils/getT'
 interface SolutionItem {
 	name: string
 	description: string
-	href: PathName
+	href: any
 	icon: React.FC<React.SVGProps<SVGSVGElement>>
 	active?: boolean
 }

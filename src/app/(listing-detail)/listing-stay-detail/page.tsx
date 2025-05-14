@@ -40,10 +40,12 @@ import {
 	MeetingRoomIcon,
 	Timer02Icon,
 } from '@/components/Icons'
+import StayDatesSingleInput from './StayDatesSingleInput'
+import GuestNameDropdownInput from './GuestNameDropdownInput'
 
-export interface ListingStayDetailPageProps {}
+export interface ListingStayDetailPageProps { }
 
-const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
+const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 	//
 
 	let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false)
@@ -68,7 +70,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 			<div className="listingSection__wrap !space-y-6">
 				{/* 1 */}
 				<div className="flex items-center justify-between">
-					<Badge name="Wooden house" />
+					<Badge name="Restaurant" />
 					<LikeSaveBtns />
 				</div>
 
@@ -83,7 +85,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 					<span>·</span>
 					<div className="flex items-center">
 						<MapPinIcon className="h-5 w-5" />
-						<span className="ms-1"> Tokyo, Jappan</span>
+						<span className="ms-1"> Eindhoven</span>
 					</div>
 				</div>
 
@@ -98,10 +100,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 					</span>
 				</div>
 
-				{/* 5 */}
-				<div className="w-full border-b border-neutral-100 dark:border-neutral-700" />
 
-				{/* 6 */}
+				{/* <div className="w-full border-b border-neutral-100 dark:border-neutral-700" />
 				<div className="flex items-center justify-between gap-x-8 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start xl:gap-x-12">
 					<div className="flex items-center gap-x-3">
 						<UsersIcon className="h-6 w-6" />
@@ -127,7 +127,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 							2 <span className="hidden sm:inline-block">bedrooms</span>
 						</span>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		)
 	}
@@ -242,41 +242,60 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 			<div className="listingSection__wrap">
 				{/* HEADING */}
 				<div>
-					<h2 className="text-2xl font-semibold">Room Rates </h2>
+					<h2 className="text-2xl font-semibold">Openingstijden </h2>
 					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						Prices may increase on weekends or holidays
+					 	Opening hours may vary on weekends or holidays
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 				{/* CONTENT */}
 				<div className="flow-root">
 					<div className="-mb-4 text-sm text-neutral-600 dark:text-neutral-300 sm:text-base">
+						{/* Monday */}
 						<div className="flex items-center justify-between gap-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-							<span>Monday - Thursday</span>
-							<span>$199</span>
+							<span>Monday</span>
+							<span>09:00 AM – 05:00 PM</span>
 						</div>
+
+						{/* Tuesday */}
 						<div className="flex items-center justify-between gap-x-4 rounded-lg p-4">
-							<span>Monday - Thursday</span>
-							<span>$199</span>
+							<span>Tuesday</span>
+							<span>09:00 AM – 05:00 PM</span>
 						</div>
+
+						{/* Wednesday */}
 						<div className="flex items-center justify-between gap-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-							<span>Friday - Sunday</span>
-							<span>$219</span>
+							<span>Wednesday</span>
+							<span>09:00 AM – 05:00 PM</span>
 						</div>
+
+						{/* Thursday */}
 						<div className="flex items-center justify-between gap-x-4 rounded-lg p-4">
-							<span>Rent by month</span>
-							<span>-8.34 %</span>
+							<span>Thursday</span>
+							<span>09:00 AM – 05:00 PM</span>
 						</div>
+
+						{/* Friday */}
 						<div className="flex items-center justify-between gap-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-							<span>Minimum number of nights</span>
-							<span>1 night</span>
+							<span>Friday</span>
+							<span>10:00 AM – 03:00 PM</span>
 						</div>
+
+						{/* Saturday */}
 						<div className="flex items-center justify-between gap-x-4 rounded-lg p-4">
-							<span>Max number of nights</span>
-							<span>90 nights</span>
+							<span>Saturday</span>
+							<span>10:00 AM – 03:00 PM</span>
+						</div>
+
+						{/* Sunday */}
+						<div className="flex items-center justify-between gap-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
+							<span>Sunday</span>
+							<span>10:00 AM – 03:00 PM</span>
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		)
 	}
@@ -482,9 +501,10 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 
 				{/* FORM */}
 				<form className="flex flex-col rounded-3xl border border-neutral-200 dark:border-neutral-700">
-					<StayDatesRangeInput className="z-[11] flex-1" />
+					<StayDatesSingleInput className="z-[11] flex-1" />
 					<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-					<GuestsInput className="flex-1" />
+					{/* <GuestsInput className="flex-1" /> */}
+					<GuestNameDropdownInput className="flex-1" />
 				</form>
 
 				{/* SUM */}
@@ -533,9 +553,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 					{PHOTOS.filter((_, i) => i >= 1 && i < 5).map((item, index) => (
 						<div
 							key={index}
-							className={`relative overflow-hidden rounded-md sm:rounded-xl ${
-								index >= 3 ? 'hidden sm:block' : ''
-							}`}
+							className={`relative overflow-hidden rounded-md sm:rounded-xl ${index >= 3 ? 'hidden sm:block' : ''
+								}`}
 						>
 							<div className="aspect-h-3 aspect-w-4 sm:aspect-h-5 sm:aspect-w-6">
 								<Image
@@ -576,7 +595,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 					{renderSection3()}
 					{renderSection4()}
 					<SectionDateRange />
-					{renderSection5()}
+					{/* {renderSection5()} */}
 					{renderSection6()}
 					{renderSection7()}
 					{renderSection8()}
