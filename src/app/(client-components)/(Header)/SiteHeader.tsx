@@ -241,10 +241,7 @@ const SiteHeader = () => {
 		// switch (headerSelected) {
 			case 'Header 1':
 				return <Header className={headerClassName} navType="MainNav1" />
-			// case 'Header 2':
-			// 	return <Header className={headerClassName} navType="MainNav2" />
-			// case 'Header 3':
-			// 	return <Header3 className={headerClassName} />
+			
 
 			default:
 				return <Header3 className={headerClassName} />
