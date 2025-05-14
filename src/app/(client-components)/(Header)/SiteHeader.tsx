@@ -27,6 +27,9 @@ interface HomePageItem {
 	slug: PathName
 }
 
+
+
+
 let OPTIONS = {
 	root: null,
 	rootMargin: '0px',
