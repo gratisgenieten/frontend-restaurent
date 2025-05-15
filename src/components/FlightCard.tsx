@@ -93,14 +93,14 @@ const FlightCard: FC<FlightCardProps> = ({ className = '', data }) => {
 				{/*  eslint-disable-next-line jsx-a11y/anchor-has-content */}
 				<a href="##" className="absolute inset-0" />
 
-				<span
+				{/* <span
 					className={`absolute bottom-0 right-0 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-50 dark:bg-neutral-800 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 ${
 						isOpen ? '-rotate-180 transform' : ''
 					}`}
 					onClick={() => setIsOpen(!isOpen)}
 				>
 					<ChevronDownIcon className="h-5 w-5" />
-				</span>
+				</span> */}
 
 				<div className="flex flex-col space-y-6 sm:flex-row sm:items-center sm:space-y-0">
 					{/* LOGO IMG */}

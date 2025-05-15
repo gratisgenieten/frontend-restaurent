@@ -51,7 +51,7 @@ const DEMO_STAY_LISTINGS = __stayListing.map((post, index): StayDataType => {
 		id: `stayListing_${index}_`,
 		saleOff: !index ? '-20% today' : post.saleOff,
 		isAds: !index ? true : post.isAds,
-		author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
+		author: DEMO_AUTHORS.filter((user:any) => user.id === post.authorId)[0],
 		listingCategory: category,
 		href: post.href as Route,
 	}
@@ -69,7 +69,7 @@ const DEMO_EXPERIENCES_LISTINGS = __experiencesListing.map(
 			id: `experiencesListing_${index}_`,
 			saleOff: !index ? '-20% today' : post.saleOff,
 			isAds: !index ? true : post.isAds,
-			author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
+			author: DEMO_AUTHORS.filter((user:any) => user.id === post.authorId)[0],
 			listingCategory: category,
 			href: post.href as Route,
 		}
@@ -87,7 +87,7 @@ const DEMO_CAR_LISTINGS = __carsListing.map((post, index): CarDataType => {
 		id: `carsListing_${index}_`,
 		saleOff: !index ? '-20% today' : post.saleOff,
 		isAds: !index ? true : post.isAds,
-		author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
+		author: DEMO_AUTHORS.filter((user:any) => user.id === post.authorId)[0],
 		listingCategory: category,
 		featuredImage: carsImgs[index],
 		href: post.href as Route,

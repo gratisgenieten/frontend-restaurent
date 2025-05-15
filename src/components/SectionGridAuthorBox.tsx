@@ -15,7 +15,7 @@ export interface SectionGridAuthorBoxProps {
 	gridClassName?: string
 }
 
-const DEMO_DATA = DEMO_AUTHORS.filter((_, i) => i < 10)
+const DEMO_DATA:any = DEMO_AUTHORS.filter((_:any, i:any) => i < 10)
 
 const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
 	className = '',
@@ -29,7 +29,7 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
 				Top 10 author of the month
 			</Heading>
 			<div className={`grid gap-6 md:gap-8 ${gridClassName}`}>
-				{authors.map((author, index) =>
+				{authors.map((author:any, index:any) =>
 					boxCard === 'box2' ? (
 						<CardAuthorBox2 key={author.id} author={author} />
 					) : (

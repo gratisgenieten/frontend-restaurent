@@ -7,7 +7,7 @@ import SectionGridReservations from '@/components/SectionGridReservations'
 import ReservationsDatesRangeInput from './ReservationsDatesRangeInput'
 
 const DEAL_OPTIONS = [
-  { value: '', label: 'All Dealers' },
+  { value: '', label: 'All Deal' },
   { value: 'deal-1', label: 'Deal A' },
   { value: 'deal-2', label: 'Deal B' },
 ]
@@ -25,7 +25,7 @@ export default function Page() {
           <div className="mb-8 flex flex-col-reverse items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="relative w-full sm:w-1/3">
               <label className="mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-200">
-                Filter by Dealer
+                Filter by Deal
               </label>
               <div className="relative">
                 <select

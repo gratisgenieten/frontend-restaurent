@@ -12,7 +12,7 @@ const DEMO_POSTS = __posts.map((post): PostDataType => {
 
 	return {
 		...post,
-		author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
+		author: DEMO_AUTHORS.filter((user:any) => user.id === post.authorId)[0],
 		categories: [categories[0]],
 	} as PostDataType
 })

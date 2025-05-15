@@ -14,7 +14,7 @@ export interface TaxonomyType {
 	name: string
 	href: Route<string>
 	count?: number
-	thumbnail?: string
+	thumbnail?: any
 	desc?: string
 	color?: TwMainColor | string
 	taxonomy: 'category' | 'tag'
@@ -24,6 +24,7 @@ export interface TaxonomyType {
 export interface AuthorType {
 	id: string | number
 	firstName: string
+	name: string
 	lastName: string
 	displayName: string
 	avatar: string | StaticImageData

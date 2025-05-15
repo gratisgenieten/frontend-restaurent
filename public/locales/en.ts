@@ -248,6 +248,7 @@ export const en = {
 		Female: 'Female',
 		Other: 'Other',
 		Username: 'Username',
+		Password: 'Password',
 		Email: 'Email',
 		'Date of birth': 'Date of birth',
 		Addess: 'Addess',

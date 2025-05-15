@@ -13,6 +13,12 @@ import SectionGridCategoryBox from '@/components/SectionGridCategoryBox'
 import SectionBecomeAnAuthor from '@/components/SectionBecomeAnAuthor'
 import SectionVideos from '@/components/SectionVideos'
 import SectionClientSay from '@/components/SectionClientSay'
+import SectionSliderNewCategoriesDynamic from '@/components/SectionSliderNewCategoriesDynamic'
+import s1 from '@/images/custom-home/s1.jpg'
+import s2 from '@/images/custom-home/s2.png'
+import s3 from '@/images/custom-home/s3.png'
+import s4 from '@/images/custom-home/s4.png'
+import s5 from '@/images/custom-home/s5.jpg'
 
 const DEMO_CATS: TaxonomyType[] = [
 	{
@@ -87,8 +93,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: 'Enjoy the great cold',
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/5764100/pexels-photo-5764100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+		thumbnail:s1,
 	},
 	{
 		id: '2',
@@ -96,8 +101,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: 'Sleep in a floating way',
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/2869499/pexels-photo-2869499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s2,
 	},
 	{
 		id: '3',
@@ -105,8 +109,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: "In the billionaire's house",
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s3,
 	},
 	{
 		id: '4',
@@ -114,8 +117,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: 'Cool in the deep forest',
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/247532/pexels-photo-247532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s4,
 	},
 	{
 		id: '5',
@@ -123,27 +125,9 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: "In the billionaire's house",
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s5,
 	},
-	{
-		id: '6',
-		href: '/listing-stay-map',
-		name: "In the billionaire's house",
-		taxonomy: 'category',
-		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/9828170/pexels-photo-9828170.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-	},
-	{
-		id: '7',
-		href: '/listing-stay-map',
-		name: 'Cool in the deep forest',
-		taxonomy: 'category',
-		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/247532/pexels-photo-247532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-	},
+	
 ]
 
 function PageHome() {
@@ -167,7 +151,7 @@ function PageHome() {
 
 				<div className="relative py-16">
 					<BackgroundSection className="bg-orange-50 dark:bg-black/20" />
-					<SectionSliderNewCategories
+					<SectionSliderNewCategoriesDynamic
 						categories={DEMO_CATS_2}
 						categoryCardType="card4"
 						itemPerRow={4}

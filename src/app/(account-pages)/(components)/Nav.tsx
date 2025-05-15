@@ -10,9 +10,12 @@ export const Nav = () => {
 
 	const listNav: Route[] = [
 		'/account',
-		'/account-savelists',
-		'/account-password',
+		'/favorite',
+		// '/account-password',
 		'/account-billing',
+		'/account-wallet',
+		'/tell-a-friend',
+		'/calendar',
 	]
 
 	return (
@@ -29,8 +32,8 @@ export const Nav = () => {
 									? 'border-primary-500 font-medium'
 									: 'border-transparent'
 							}`}
-						>
-							{item.replace('-', ' ').replace('/', ' ')}
+						>	
+							{item.replace('-', ' ') == '/account wallet' ? 'wallet' : item.replaceAll('-', ' ').replace('/', ' ')}
 						</Link>
 					)
 				})}

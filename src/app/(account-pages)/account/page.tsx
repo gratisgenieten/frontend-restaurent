@@ -53,6 +53,10 @@ const AccountPage = () => {
 						<Label>{T['accountPage']['Username']}</Label>
 						<Input className="mt-1.5" defaultValue="@eden_tuan" />
 					</div>
+					<div>
+						<Label>{T['accountPage']['Password']}</Label>
+						<Input className="mt-1.5" defaultValue="" />
+					</div>	
 					{/* ---- */}
 					<div>
 						<Label>{T['accountPage']['Email']}</Label>
