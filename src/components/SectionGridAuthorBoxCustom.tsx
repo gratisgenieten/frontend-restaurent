@@ -16,10 +16,27 @@ export interface SectionGridAuthorBoxCustomProps {
 }
 
 interface FormData {
-  name: string
+  // General Information
+  title: string
+  firstName: string
+  lastName: string
+  position: string
+  company: string
+  businessArena: string
+  employees: string
+
+  // Contact Details
+  street: string
+  additionalInfo: string
+  zipCode: string
+  place: string
+  country: string
+  countryCode: string
+  phoneNumber: string
   email: string
+  
+  // For display purposes
   avatar: string
-  role: string
 }
 
 const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
@@ -30,37 +47,105 @@ const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
   const [authors, setAuthors] = useState<AuthorType[]>(DEMO_AUTHORS.slice(0, 10))
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [selectedAuthor, setSelectedAuthor] = useState<AuthorType | null>(null)
-  const [form, setForm] = useState<any>([])
+  const [form, setForm] = useState<FormData>({
+    title: '',
+    firstName: '',
+    lastName: '',
+    position: '',
+    company: '',
+    businessArena: '',
+    employees: '',
+    street: '',
+    additionalInfo: '',
+    zipCode: '',
+    place: '',
+    country: '',
+    countryCode: '',
+    phoneNumber: '',
+    email: '',
+    avatar: ''
+  })
+  const [termsAccepted, setTermsAccepted] = useState<boolean>(false)
 
   const openAddModal = () => {
-    setForm({ name: '', email: '', avatar: '', role: '' })
+    setForm({
+      title: '',
+      firstName: '',
+      lastName: '',
+      position: '',
+      company: '',
+      businessArena: '',
+      employees: '',
+      street: '',
+      additionalInfo: '',
+      zipCode: '',
+      place: '',
+      country: '',
+      countryCode: '',
+      phoneNumber: '',
+      email: '',
+      avatar: ''
+    })
+    setTermsAccepted(false)
     setSelectedAuthor(null)
     setIsModalOpen(true)
   }
 
   const openEditModal = (author: AuthorType) => {
     setSelectedAuthor(author)
+    // Split name into first and last name if possible
+    let firstName = '', lastName = '';
+    if (author.name) {
+      const nameParts = author.name.split(' ');
+      firstName = nameParts[0] || '';
+      lastName = nameParts.slice(1).join(' ') || '';
+    }
+    
     setForm({
-      name: author.name || '',
+      title: author.title || '',
+      firstName: firstName,
+      lastName: lastName,
+      position: author.position || '',
+      company: author.company || '',
+      businessArena: author.businessArena || '',
+      employees: author.employees || '',
+      street: author.street || '',
+      additionalInfo: author.additionalInfo || '',
+      zipCode: author.zipCode || '',
+      place: author.place || '',
+      country: author.country || '',
+      countryCode: author.countryCode || '',
+      phoneNumber: author.phoneNumber || '',
       email: author.email || '',
-      avatar: author.avatar || '',
-      role: author.jobName || '',
+      avatar: author.avatar || ''
     })
+    setTermsAccepted(true) // Assuming terms are accepted for existing records
     setIsModalOpen(true)
   }
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-    setForm((prev:any) => ({ ...prev, [name]: value }))
+    setForm(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTermsAccepted(e.target.checked)
   }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
 
-    if (!form.name.trim() || !form.email.trim()) {
-      alert('Name and Email are required')
+    if (!form.firstName.trim() || !form.email.trim()) {
+      alert('First Name and Email are required')
       return
     }
+
+    if (!termsAccepted) {
+      alert('You must accept the Terms and Conditions')
+      return
+    }
+
+    const fullName = `${form.firstName} ${form.lastName}`.trim()
 
     if (selectedAuthor) {
       setAuthors(prev =>
@@ -68,28 +153,52 @@ const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
           author.id === selectedAuthor.id
             ? {
                 ...author,
-                name: form.name,
+                name: fullName,
+                title: form.title,
+                position: form.position,
+                company: form.company,
+                businessArena: form.businessArena,
+                employees: form.employees,
+                street: form.street,
+                additionalInfo: form.additionalInfo,
+                zipCode: form.zipCode,
+                place: form.place,
+                country: form.country,
+                countryCode: form.countryCode,
+                phoneNumber: form.phoneNumber,
                 email: form.email,
                 avatar: form.avatar,
-                jobName: form.role,
+                jobName: form.position || form.company, // Use position as jobName for display
               }
             : author
         )
       )
     } else {
       const newAuthor: AuthorType = {
-		  id: Date.now(), // or uuid()
-		  name: form.name,
-		  email: form.email,
-		  avatar: form.avatar,
-		  jobName: form.role,
-		  href: '#',
-		  firstName: '',
-		  lastName: '',
-		  displayName: '',
-		  count: 0,
-		  desc: ''
-	  }
+        id: Date.now(),
+        name: fullName,
+        title: form.title,
+        position: form.position,
+        company: form.company,
+        businessArena: form.businessArena,
+        employees: form.employees,
+        street: form.street,
+        additionalInfo: form.additionalInfo,
+        zipCode: form.zipCode,
+        place: form.place,
+        country: form.country,
+        countryCode: form.countryCode,
+        phoneNumber: form.phoneNumber,
+        email: form.email,
+        avatar: form.avatar,
+        jobName: form.position || form.company, // Use position as jobName for display
+        href: '#',
+        firstName: form.firstName,
+        lastName: form.lastName,
+        displayName: fullName,
+        count: 0,
+        desc: ''
+      }
       setAuthors(prev => [...prev, newAuthor])
     }
 
@@ -113,80 +222,256 @@ const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
                 index={index < 3 ? index + 1 : undefined}
                 author={author}
               />
-              {/* <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition">
-                <button
-                  onClick={() => openEditModal(author)}
-                  className="text-sm text-blue-600 bg-white px-2 py-1 rounded shadow"
-                >
-                  Edit
-                </button>
-              </div> */}
+              {/* Edit button code remains commented out as in original */}
             </div>
           )
         )}
       </div>
 
-      {/* <div className="mt-16 flex flex-col justify-center gap-y-3 sm:flex-row sm:gap-x-5 sm:gap-y-0">
-        <ButtonSecondary loading>{T['common']['Show me more']}</ButtonSecondary>
-        <ButtonPrimary>{T['common']['Become a host']}</ButtonPrimary>
-      </div> */}
-
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg w-full max-w-md p-6 shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">
-              {selectedAuthor ? 'Edit Client' : 'Add New Client'}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={form.name}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded"
-              />
-              <input
-                type="text"
-                name="avatar"
-                placeholder="Avatar URL"
-                value={form.avatar}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded"
-              />
-              <input
-                type="text"
-                name="role"
-                placeholder="Role"
-                value={form.role}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded"
-              />
-              <div className="flex justify-end gap-2 pt-4">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 border border-gray-300 text-gray-600 rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                >
-                  {selectedAuthor ? 'Update' : 'Create'}
-                </button>
+        <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg w-full max-w-4xl shadow-lg">
+            <div className="flex flex-col md:flex-row">
+              {/* General Information Column */}
+              <div className="p-6 md:w-1/2">
+                <h2 className="text-xl font-semibold mb-6 text-blue-700">
+                  General Information
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <select
+                      name="title"
+                      value={form.title}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded"
+                    >
+                      <option value="" disabled>Title</option>
+                      <option value="Mr">Mr</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Dr">Dr</option>
+                    </select>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="First Name"
+                      value={form.firstName}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded"
+                    />
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last Name"
+                      value={form.lastName}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded"
+                    />
+                  </div>
+                  
+                  <div>
+                    <select
+                      name="position"
+                      value={form.position}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded"
+                    >
+                      <option value="" disabled>Position</option>
+                      <option value="CEO">CEO</option>
+                      <option value="CTO">CTO</option>
+                      <option value="Manager">Manager</option>
+                      <option value="Developer">Developer</option>
+                      <option value="Designer">Designer</option>
+                    </select>
+                  </div>
+                  
+                  <input
+                    type="text"
+                    name="company"
+                    placeholder="Company"
+                    value={form.company}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded"
+                  />
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="businessArena"
+                      placeholder="Business Arena"
+                      value={form.businessArena}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded"
+                    />
+                    
+                    <select
+                      name="employees"
+                      value={form.employees}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded"
+                    >
+                      <option value="" disabled>Employees</option>
+                      <option value="1-10">1-10</option>
+                      <option value="11-50">11-50</option>
+                      <option value="51-200">51-200</option>
+                      <option value="201-500">201-500</option>
+                      <option value="500+">500+</option>
+                    </select>
+                  </div>
+                  
+                  <input
+                    type="text"
+                    name="avatar"
+                    placeholder="Avatar URL (for display)"
+                    value={form.avatar}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded"
+                  />
+                </form>
               </div>
-            </form>
+              
+              {/* Contact Details Column */}
+              <div className="p-6 md:w-1/2 bg-blue-600 text-white">
+                <h2 className="text-xl font-semibold mb-6">
+                  Contact Details
+                </h2>
+                <form className="space-y-4">
+                  <input
+                    type="text"
+                    name="street"
+                    placeholder="Street + Nr"
+                    value={form.street}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded bg-transparent border-white/50 placeholder-white/70"
+                  />
+                  
+                  <input
+                    type="text"
+                    name="additionalInfo"
+                    placeholder="Additional Information"
+                    value={form.additionalInfo}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded bg-transparent border-white/50 placeholder-white/70"
+                  />
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="zipCode"
+                      placeholder="Zip Code"
+                      value={form.zipCode}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded bg-transparent border-white/50 placeholder-white/70"
+                    />
+                    
+                    <select
+                      name="place"
+                      value={form.place}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded bg-transparent border-white/50"
+                    >
+                      <option value="" disabled>Place</option>
+                      <option value="New York">New York</option>
+                      <option value="Los Angeles">Los Angeles</option>
+                      <option value="Chicago">Chicago</option>
+                      <option value="Houston">Houston</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <select
+                    name="country"
+                    value={form.country}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded bg-transparent border-white/50"
+                  >
+                    <option value="" disabled>Country</option>
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                  </select>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="countryCode"
+                      placeholder="Code +"
+                      value={form.countryCode}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded bg-transparent border-white/50 placeholder-white/70"
+                    />
+                    
+                    <input
+                      type="text"
+                      name="phoneNumber"
+                      placeholder="Phone Number"
+                      value={form.phoneNumber}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border rounded bg-transparent border-white/50 placeholder-white/70"
+                    />
+                  </div>
+                  
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    value={form.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border rounded bg-transparent border-white/50 placeholder-white/70"
+                  />
+                  
+                  <div className="flex items-center mt-6">
+                    <input
+                      type="checkbox"
+                      id="terms"
+                      checked={termsAccepted}
+                      onChange={handleCheckboxChange}
+                      className="h-4 w-4 text-blue-800 border-white"
+                    />
+                    <label htmlFor="terms" className="ml-2 text-sm">
+                      I do accept the <a href="#" className="underline">Terms and Conditions</a> of your site.
+                    </label>
+                  </div>
+                  
+                  {/* <div className="mt-8 flex justify-center">
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      className="px-6 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 font-medium"
+                      disabled={!termsAccepted}
+                    >
+                      Register Badge
+                    </button>
+                  </div> */}
+                </form>
+              </div>
+            </div>
+            
+            {/* Footer with cancel button */}
+            <div className="px-6 py-4 bg-gray-100 flex justify-between rounded-b-lg">
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="px-4 py-2 border border-gray-300 text-gray-600 rounded hover:bg-gray-200"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                disabled={!termsAccepted}
+              >
+                {selectedAuthor ? 'Update' : 'Save Client'}
+              </button>
+            </div>
           </div>
         </div>
       )}

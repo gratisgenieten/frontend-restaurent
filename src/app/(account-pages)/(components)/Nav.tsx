@@ -13,7 +13,7 @@ export const Nav = () => {
 		'/favorite',
 		// '/account-password',
 		'/account-billing',
-		'/account-wallet',
+		'/wallet',
 		'/tell-a-friend',
 		'/calendar',
 	]
@@ -33,7 +33,7 @@ export const Nav = () => {
 									: 'border-transparent'
 							}`}
 						>	
-							{item.replace('-', ' ') == '/account wallet' ? 'wallet' : item.replaceAll('-', ' ').replace('/', ' ')}
+							{item.replace('-', ' ') == '/wallet' ? 'wallet' : item.replaceAll('-', ' ').replace('/', ' ')}
 						</Link>
 					)
 				})}

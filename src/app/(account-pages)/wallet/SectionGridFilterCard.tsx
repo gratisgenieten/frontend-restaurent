@@ -12,60 +12,60 @@ export interface SectionGridFilterCardProps {
 const DEMO_DATA: FlightCardProps['data'][] = [
 	{
 		id: '1',
-		price: '$4,100',
+		price: '€4,100',
 		airlines: {
 			logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
-			name: 'Korean Air',
+			name: 'MediaMarkt',
 		},
 	},
 	{
 		id: '2',
-		price: '$3,380',
+		price: '€3,380',
 		airlines: {
 			logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
-			name: 'Singapore Airlines',
+			name: ' Coolblue ',
 		},
 	},
 	{
 		id: '3',
-		price: '$2,380',
+		price: '€2,380',
 		airlines: {
 			logo: 'https://www.gstatic.com/flights/airline_logos/70px/multi.png',
-			name: 'Philippine Airlines',
+			name: 'Essent',
 		},
 	},
-	{
-		id: '1',
-		price: '$4,100',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
-			name: 'Korean Air',
-		},
-	},
-	{
-		id: '2',
-		price: '$3,380',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
-			name: 'Singapore Airlines',
-		},
-	},
-	{
-		id: '1',
-		price: '$4,100',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
-			name: 'Korean Air',
-		},
-	},
-	{
-		id: '2',
-		price: '$3,380',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
-			name: 'Singapore Airlines',
-		},
-	},
+	// {
+	// 	id: '1',
+	// 	price: '€4,100',
+	// 	airlines: {
+	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
+	// 		name: 'Korean Air',
+	// 	},
+	// },
+	// {
+	// 	id: '2',
+	// 	price: '€3,380',
+	// 	airlines: {
+	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
+	// 		name: 'Singapore Airlines',
+	// 	},
+	// },
+	// {
+	// 	id: '1',
+	// 	price: '€4,100',
+	// 	airlines: {
+	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
+	// 		name: 'Korean Air',
+	// 	},
+	// },
+	// {
+	// 	id: '2',
+	// 	price: '€3,380',
+	// 	airlines: {
+	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
+	// 		name: 'Singapore Airlines',
+	// 	},
+	// },
 ]
 
 const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({

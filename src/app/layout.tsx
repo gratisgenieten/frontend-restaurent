@@ -19,12 +19,14 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-	title: 'Chisfis - Booking online React Next Template',
-	description: 'Booking online & rental online React Next Template',
-	keywords: 'Chisfis, Booking online, React Next Template',
-	// viewport:
-	// 	'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
-}
+  title: "GratisGenieten",
+  description:
+    "Spaar online, geniet lokaal: Shop bij 2000+ webshops, geniet gratis bij lokale favorieten in jouw stad",
+  keywords:
+    "GratisGenieten, Booking online, Spaar online, geniet lokaal, webshops",
+  // viewport:
+  // 	'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+};
 
 export default function RootLayout({
 	children,

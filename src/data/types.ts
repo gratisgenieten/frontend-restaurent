@@ -34,6 +34,18 @@ export interface AuthorType {
 	jobName: string
 	href: Route<string>
 	starRating?: number
+	title?: string
+	position?: string
+	company?: string
+	businessArena?: string
+	employees?: string
+	street?: string
+	additionalInfo?: string
+	zipCode?: string
+	place?: string
+	country?: string
+	countryCode?: string
+	phoneNumber?: string
 }
 
 export interface PostDataType {
