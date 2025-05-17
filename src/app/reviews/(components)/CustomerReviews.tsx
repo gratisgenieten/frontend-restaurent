@@ -57,7 +57,7 @@ const CustomerReviews = () => {
                 alt={review.name}
                 className="mx-auto rounded-full w-16 h-16 object-cover mb-3 border-2 border-green-400"
               />
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{review.text}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-300 mb-3">{review.text}</p>
               <h3 className="font-semibold text-md text-gray-800 dark:text-white mb-1">{review.name}</h3>
               <StarRating rating={review.rating} />
             </div>

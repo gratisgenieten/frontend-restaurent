@@ -11,8 +11,8 @@ function reviews() {
                 <BackgroundSection />
                 <SectionClientSay />
             </div>
-            <ClientReviewSection />
             <CustomerReviews/>
+            <ClientReviewSection />
         </div>
 
     )
