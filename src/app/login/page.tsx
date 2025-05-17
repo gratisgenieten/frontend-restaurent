@@ -178,8 +178,11 @@ const PageLogin: FC<PageLoginProps> = ({}) => {
                   SUBMIT
                 </ButtonPrimary>
 
-                <div className="text-center text-sm text-gray-600">
-                  <span>Create Account</span>
+                <div className=" flex flex-col items-center justify-center text-center text-sm text-gray-600">
+                  <span>No Account?</span>
+                  <Link href="/signup" className="text-blue-500 font-medium">
+                      Create an Account
+                    </Link>
                 </div>
               </form>
             </div>
