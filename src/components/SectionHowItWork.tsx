@@ -17,26 +17,26 @@ export interface SectionHowItWorkProps {
 	}[]
 }
 
-const DEMO_DATA: SectionHowItWorkProps['data'] = [
-	{
-		id: 1,
-		img: HIW1img,
-		title: 'Book & relax',
-		desc: 'Let each trip be an inspirational journey, each room a peaceful space',
-	},
-	{
-		id: 2,
-		img: HIW2img,
-		title: 'Smart checklist',
-		desc: 'Let each trip be an inspirational journey, each room a peaceful space',
-	},
-	{
-		id: 3,
-		img: HIW3img,
-		title: 'Save more',
-		desc: 'Let each trip be an inspirational journey, each room a peaceful space',
-	},
-]
+const DEMO_DATA: SectionHowItWorkProps["data"] = [
+  {
+    id: 1,
+    img: HIW1img,
+    title: "Makkelijk sparen",
+    desc: "In enkele kliks ben jij al bij 2000+ webshops aan het sparen!",
+  },
+  {
+    id: 2,
+    img: HIW2img,
+    title: "Honderden euro`s",
+    desc: "Je cashback loopt snel op tot honderden euro`s per jaar!",
+  },
+  {
+    id: 3,
+    img: HIW3img,
+    title: "2e voucher gratis!",
+    desc: "Automatisch sparen voor de 2e voucher betekend veel GratisGenieten!",
+  },
+];
 
 const SectionHowItWork: FC<SectionHowItWorkProps> = ({
 	className = '',
@@ -47,8 +47,8 @@ const SectionHowItWork: FC<SectionHowItWorkProps> = ({
 			className={`nc-SectionHowItWork ${className}`}
 			data-nc-id="SectionHowItWork"
 		>
-			<Heading isCenter desc="Keep calm & travel on">
-				How it work
+			<Heading isCenter desc="Altijd voordeel, ga GratisGenieten">
+			Aanmelden is gratis
 			</Heading>
 			<div className="relative mt-20 grid gap-20 md:grid-cols-3">
 				<Image
