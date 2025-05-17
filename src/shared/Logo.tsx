@@ -7,13 +7,12 @@ export interface LogoProps {
 	className?: string
 }
 
-const Logo: React.FC<LogoProps> = ({ className = 'w-22 sm:w-24' }) => {
+const Logo: React.FC<LogoProps> = ({ className = 'w-22 sm:w-32' }) => {
 	return (
 		<Link
 			href="/"
 			className={`ttnc-logo inline-block text-primary-600 focus:outline-none focus:ring-0 ${className}`}
 		>
-			<LogoSvgLight />
 			<LogoSvg />
 		</Link>
 	)
