@@ -13,7 +13,6 @@ export interface TaxonomyType {
 	id: string | number
 	name: string
 	href: Route<string>
-	count?: number
 	thumbnail?: any
 	desc?: string
 	color?: TwMainColor | string
