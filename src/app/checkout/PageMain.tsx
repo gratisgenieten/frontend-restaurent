@@ -17,6 +17,7 @@ import ModalSelectGuests from '@/components/ModalSelectGuests'
 import Image from 'next/image'
 import { GuestsObject } from '../(client-components)/type'
 import T from '@/utils/getT'
+import Checkbox from '@/shared/Checkbox'
 
 export interface CheckOutPagePageMainProps {
 	className?: string
@@ -294,6 +295,17 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 								</TabPanel> */}
 							</TabPanels>
 						</TabGroup>
+						<div className="">
+							<Checkbox
+								name={"accept"}
+								label={"Ik $firstname accepteer de algemene voorwaarden op ddmmyyyy met ip in browser."}
+								defaultChecked={true}
+								className='text-xs w-full h-6 mt-6'
+								// onChange={(checked) =>
+								// 	handleChangeAirlines(checked, item.name)
+								// }
+							/>
+						</div>
 						<div className="pt-8">
 							<ButtonPrimary href={'/pay-done'}>Betaal & boek</ButtonPrimary>
 						</div>

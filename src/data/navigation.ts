@@ -176,14 +176,6 @@ const templatesChildrenMenus: NavItemType[] = [
 export const NAVIGATION_DEMO: NavItemType[] = [
 	{
 		id: ncNanoId(),
-		href: '/',
-		name: 'Home',
-		// type: 'dropdown',
-		// children: demoChildMenus,
-		// isNew: true,
-	},
-	{
-		id: ncNanoId(),
 		href: '/about',
 		name: 'About',
 		// type: 'dropdown',
@@ -238,6 +230,36 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 		// children: demoChildMenus,
 		// isNew: true,
 	},
+	{
+		id: ncNanoId(),
+		href: '/deals',
+		name: 'Deals',
+		// type: 'dropdown',
+		// children: demoChildMenus,
+		// isNew: true,
+	},
+	{
+		id: ncNanoId(),
+		href: '#',
+		name: 'Forms',
+		type: 'dropdown',
+		children: [
+			{ id: ncNanoId(), href: '/admin-v1/affiliate-click', name: 'Affiliate Clicks' },
+			{ id: ncNanoId(), href: '/admin-v1/categories', name: 'Categories' },
+			{ id: ncNanoId(), href: '/admin-v1/deals', name: 'Deals' },
+			{ id: ncNanoId(), href: '/admin-v1/options-group', name: 'Options Group' },
+			{ id: ncNanoId(), href: '/admin-v1/partners', name: 'Partners' },
+			{ id: ncNanoId(), href: '/admin-v1/permission', name: 'Permissions' },
+			{ id: ncNanoId(), href: '/admin-v1/referrals', name: 'Referrals' },
+			{ id: ncNanoId(), href: '/admin-v1/reservation', name: 'Reservations' },
+			{ id: ncNanoId(), href: '/admin-v1/role', name: 'Roles' },
+			{ id: ncNanoId(), href: '/admin-v1/status-history', name: 'Status History' },
+			{ id: ncNanoId(), href: '/admin-v1/transactions', name: 'Transactions' },
+			{ id: ncNanoId(), href: '/admin-v1/universal-status', name: 'Universal Status' },
+			{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
+		]
+	}
+
 	// {
 	// 	id: ncNanoId(),
 	// 	href: '/',

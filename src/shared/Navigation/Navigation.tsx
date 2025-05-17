@@ -4,7 +4,7 @@ import { NAVIGATION_DEMO } from '@/data/navigation'
 
 function Navigation() {
 	return (
-		<ul className="nc-Navigation relative hidden lg:flex lg:flex-wrap lg:gap-x-1">
+		<ul className="nc-Navigation relative hidden lg:flex lg:flex-wrap lg:gap-x-0">
 			{NAVIGATION_DEMO.map((item:any) => (
 				<NavigationItem key={item.id} menuItem={item} />
 			))}

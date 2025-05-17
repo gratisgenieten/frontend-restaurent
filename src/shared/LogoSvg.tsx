@@ -4,7 +4,7 @@ import logo from '@/images/logo.png'
 const LogoSvg = () => {
 	return (
 		<Image
-			className="block w-full min-w-28 dark:hidden"
+			className="block w-full min-w-28 "
 			src={logo}
 			alt="logo"
 		/>

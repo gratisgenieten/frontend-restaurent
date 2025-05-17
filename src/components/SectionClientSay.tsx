@@ -82,8 +82,8 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
 	let currentItem = data[index]
 	return (
 		<div className={`nc-SectionClientSay relative ${className} `}>
-			<Heading desc="Let's see what people think of Chisfis" isCenter>
-				Good news from far away
+			<Heading desc="Sluit jij je ook gratis aan? Ga jij GratisGenieten?" isCenter>
+				Wat onze klanten over ons zeggen
 			</Heading>
 			<div className="relative mx-auto max-w-2xl md:mb-16">
 				<div className="absolute -inset-28 top-0 hidden items-center justify-center lg:flex">
