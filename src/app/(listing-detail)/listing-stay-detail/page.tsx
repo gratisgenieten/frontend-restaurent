@@ -42,6 +42,8 @@ import {
 } from '@/components/Icons'
 import StayDatesSingleInput from './StayDatesSingleInput'
 import GuestNameDropdownInput from './GuestNameDropdownInput'
+import ClientReviewSection from '@/app/reviews/(components)/ClientReviewSection'
+import CustomerReviews from '@/app/reviews/(components)/CustomerReviews'
 
 export interface ListingStayDetailPageProps { }
 
@@ -398,7 +400,11 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 						<ButtonSecondary>View more 20 reviews</ButtonSecondary>
 					</div>
 				</div>
+            <CustomerReviews/>
+				 <ClientReviewSection />
 			</div>
+
+			
 		)
 	}
 
