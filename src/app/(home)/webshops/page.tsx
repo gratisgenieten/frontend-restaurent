@@ -34,70 +34,53 @@ import SectionGridFeatureProperty from '../SectionGridFeatureProperty'
 import SectionDowloadApp from '../SectionDowloadApp'
 import SectionHero2 from '@/app/(server-components)/SectionHero2'
 import Image from 'next/image'
-
+import SectionSliderNewCategoriesWebShopes from '@/components/SectionSliderNewCategoriesWebShops'
+import SectionSliderNewCategoriesDynamic from '@/components/SectionSliderNewCategoriesDynamic'
+import s1 from '@/images/custom-home/s1.jpg'
+import s2 from '@/images/custom-home/s2.png'
+import s3 from '@/images/custom-home/s3.png'
+import s4 from '@/images/custom-home/s4.png'
+import s5 from '@/images/custom-home/s5.jpg'
 const DEMO_CATS_2: TaxonomyType[] = [
-	{
+		{
 		id: '1',
-		href: '/listing-real-estate',
+		href: '/listing-stay-map',
 		name: 'Enjoy the great cold',
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/5764100/pexels-photo-5764100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+		thumbnail:s1,
 	},
 	{
 		id: '2',
-		href: '/listing-real-estate',
+		href: '/listing-stay-map',
 		name: 'Sleep in a floating way',
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/2869499/pexels-photo-2869499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s2,
 	},
 	{
 		id: '3',
-		href: '/listing-real-estate',
+		href: '/listing-stay-map',
 		name: "In the billionaire's house",
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s3,
 	},
 	{
 		id: '4',
-		href: '/listing-real-estate',
+		href: '/listing-stay-map',
 		name: 'Cool in the deep forest',
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/247532/pexels-photo-247532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s4,
 	},
 	{
 		id: '5',
-		href: '/listing-real-estate',
+		href: '/listing-stay-map',
 		name: "In the billionaire's house",
 		taxonomy: 'category',
 		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-	},
-	{
-		id: '6',
-		href: '/listing-real-estate',
-		name: 'Sleep in a floating way',
-		taxonomy: 'category',
-		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/2869499/pexels-photo-2869499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-	},
-	{
-		id: '7',
-		href: '/listing-real-estate',
-		name: "In the billionaire's house",
-		taxonomy: 'category',
-		count: 188288,
-		thumbnail:
-			'https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		thumbnail:s5,
 	},
 ]
 
@@ -105,9 +88,9 @@ function PageHome2() {
 	return (
 		<main className="nc-PageHome2 relative overflow-hidden">
 			<div className="container relative mb-24 space-y-24 lg:mb-28 lg:space-y-28">
-				<SectionHero2 className="" />
+				{/* <SectionHero2 className="" /> */}
 
-				<div className="ncSectionLogos grid grid-cols-3 gap-5 sm:gap-16 lg:grid-cols-5">
+				<div className="ncSectionLogos grid grid-cols-3 gap-5 sm:gap-16 lg:grid-cols-5 mt-24">
 					<div className="flex items-end justify-center">
 						<Image className="block dark:hidden" src={logo1} alt="logo1" />
 						<Image className="hidden dark:block" src={logo1Dark} alt="logo1" />
@@ -131,62 +114,49 @@ function PageHome2() {
 					</div>
 				</div>
 
-				<SectionHowItWork
-					data={[
-						{
-							id: 1,
-							img: HIW1img,
-							imgDark: HIW1imgDark,
-							title: 'Smart search',
-							desc: 'Name the area or type of home you are looking for the search bar. Our app will find you the perfect match.',
-						},
-						{
-							id: 2,
-							img: HIW2img,
-							imgDark: HIW2imgDark,
-							title: 'Choose property',
-							desc: 'From the number of options our app will provide, you can select any property that you like to explore.',
-						},
-						{
-							id: 3,
-							img: HIW3img,
-							imgDark: HIW3imgDark,
-							title: 'Book you property',
-							desc: 'Find a home or space from our search bar. Enter your specific location, property type and price range.',
-						},
-					]}
+				{/* <SectionHowItWork
+					data={[]}
+				/> */}
+				<SectionSliderNewCategoriesWebShopes
+					heading="How it work"
+					subHeading="Keep clam & travel on"
+					categoryCardType="card5"
+					itemPerRow={5}
 				/>
-
-				<div className="relative py-16">
+				{/* <div className="relative py-16">
 					<BackgroundSection />
 					<SectionGridFeatureProperty />
-				</div>
+				</div> */}
 
-				<SectionOurFeatures type="type2" rightImg={rightImgPng} />
+				{/* <SectionOurFeatures type="type2" rightImg={rightImgPng} /> */}
 
 				<SectionDowloadApp />
 
-				<SectionSliderNewCategories
-					categories={DEMO_CATS_2}
-					categoryCardType="card4"
-					itemPerRow={4}
-					heading="Suggestions for discovery"
-					subHeading="Popular places to stay that Chisfis recommends for you"
-				/>
+				<div className="relative py-16">
+					<BackgroundSection className="bg-orange-50 dark:bg-black/20" />
+					<SectionSliderNewCategoriesDynamic
+						categories={DEMO_CATS_2}
+						categoryCardType="card4"
+						itemPerRow={4}
+						heading="Suggestions for discovery"
+						subHeading="Popular places to stay that Chisfis recommends for you"
+						sliderStyle="style2"
+					/>
+				</div>
 
 				<div className="relative py-16">
 					<BackgroundSection className="bg-neutral-100 dark:bg-black dark:bg-opacity-20" />
 					<SectionGridAuthorBox boxCard="box2" />
 				</div>
 
-				<SectionSliderNewCategories
+				{/*<SectionSliderNewCategories
 					heading="Explore by types of stays"
 					subHeading="Explore houses based on 10 types of stays"
 					categoryCardType="card5"
 					itemPerRow={5}
 				/>
 
-				<SectionSubscribe2 />
+				<SectionSubscribe2 /> */}
 			</div>
 		</main>
 	)

@@ -241,7 +241,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 											Requirements from client to restaurant
 										</p>
 									</div>
-									<div className="space-y-1">
+									{/* <div className="space-y-1">
 										<Label>MOLLIE number</Label>
 										<Input name="first_name" type="text" placeholder="Enter card number" required />
 									</div>
@@ -272,7 +272,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 											/>
 											<p className="text-xs text-neutral-500">Required for WhatsApp etc.</p>
 										</div>
-									</div>
+									</div> */}
 
 								</TabPanel>
 								{/* <TabPanel className="space-y-5">
@@ -295,7 +295,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 							</TabPanels>
 						</TabGroup>
 						<div className="pt-8">
-							<ButtonPrimary href={'/pay-done'}>Confirm and pay</ButtonPrimary>
+							<ButtonPrimary href={'/pay-done'}>Betaal & boek</ButtonPrimary>
 						</div>
 					</div>
 				</div>
