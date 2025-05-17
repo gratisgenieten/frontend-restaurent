@@ -18,7 +18,7 @@ const ListingRealEstatePage: FC<ListingRealEstatePageProps> = ({}) => {
 
 	return (
 		<div className="container relative">
-			<SectionGridFilterCard className="py-24 lg:py-28" />
+			<SectionGridFilterCard className="py-4 lg:py-2" />
 		</div>
 	)
 }

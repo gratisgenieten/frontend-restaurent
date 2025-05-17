@@ -19,17 +19,6 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 }) => {
 	return (
 		<div className={`nc-SectionGridFilterCard ${className}`}>
-			<Heading2
-				heading="Property in Tokyo"
-				subHeading={
-					<span className="mt-3 block text-neutral-500 dark:text-neutral-400">
-						233 Property
-						<span className="mx-2">·</span>
-						Aug 12 - 18
-					</span>
-				}
-			/>
-
 			<div className="mb-8 lg:mb-11">
 				<TabFilters />
 			</div>
