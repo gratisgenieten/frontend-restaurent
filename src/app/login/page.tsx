@@ -164,7 +164,7 @@ const PageLogin: FC<PageLoginProps> = ({}) => {
                     </label>
                   </div>
                   <Link
-                    href="/forgot-password"
+                    href="/"
                     className="text-xs sm:text-sm text-gray-600"
                   >
                     Forgot Password ?
