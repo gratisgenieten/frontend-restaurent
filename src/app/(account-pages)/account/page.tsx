@@ -36,6 +36,14 @@ const AccountPage = () => {
 				</div>
 				<div className="mt-10 max-w-3xl flex-grow space-y-6 md:mt-0 md:ps-16">
 					<div>
+						<Label>{T['accountPage']['Title']}</Label>
+						<Select className="mt-1.5">
+							<option value="Mr">{T['accountPage']['Mr']}</option>
+							<option value="Mrs">{T['accountPage']['Mrs']}</option>
+							<option value="Ms">{T['accountPage']['Ms']}</option>
+						</Select>
+					</div>
+					<div>
 						<Label>{T['accountPage']['Name']}</Label>
 						<Input className="mt-1.5" defaultValue="Eden Tuan" />
 					</div>
@@ -69,7 +77,11 @@ const AccountPage = () => {
 					</div>
 					{/* ---- */}
 					<div>
-						<Label>{T['accountPage']['Addess']}</Label>
+						<Label>{T['accountPage']['City']}</Label>
+						<Input className="mt-1.5" defaultValue="New York" />
+					</div>
+					<div>
+						<Label>{T['accountPage']['Address']}</Label>
 						<Input className="mt-1.5" defaultValue="New york, USA" />
 					</div>
 					{/* ---- */}

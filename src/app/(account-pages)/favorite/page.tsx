@@ -14,7 +14,7 @@ import ButtonSecondary from '@/shared/ButtonSecondary'
 import T from '@/utils/getT'
 
 const AdminFavorites = () => {
-	let [categories] = useState(['Stays', 'Experiences', 'Cars'])
+	let [categories] = useState(["Uiteten", "Wellness", "Dagje weg"]);
 
 	const renderSection1 = () => {
 		return (

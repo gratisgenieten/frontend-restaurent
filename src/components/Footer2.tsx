@@ -23,8 +23,10 @@ const navigation: {
 		{ name: 'Guides', href: '#' },
 	],
 	company: [
-		{ name: 'About', href: '#' },
-		{ name: 'Blog', href: '#' },
+		{ name: 'About', href: '/about' },
+		{ name: 'Reviews', href: '/reviews' },
+		{ name: 'Contacts', href: '/contact' },
+		{ name: 'Blog', href: '/blog' },
 		{ name: 'Jobs', href: '#' },
 		{ name: 'Press', href: '#' },
 	],
