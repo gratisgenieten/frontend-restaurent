@@ -53,6 +53,7 @@ const ClientReviewSection = () => {
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest">Comments</h2>
         <h1 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Clients Says</h1>
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {reviews.map((r, idx) => (
             <div
@@ -83,7 +84,7 @@ const ClientReviewSection = () => {
       </div>
     </section>
 
-    
+
   );
 };
 
