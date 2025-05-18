@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
@@ -41,7 +42,7 @@ const CustomerReviews = () => {
       <div className="max-w-6xl mx-auto px-4 text-center">
         {/* Heading */}
         <h1 className="text-3xl font-bold mb-10">
-          <span className="text-gray-800 dark:text-white">Customer's </span>
+          <span className="text-gray-800 dark:text-white">Customer&apos; </span>
           <span className="bg-green-600 text-white px-4 py-1 rounded-tr-xl rounded-bl-xl">Review</span>
         </h1>
 
@@ -52,7 +53,7 @@ const CustomerReviews = () => {
               key={index}
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm px-6 py-6 rounded-lg flex flex-col justify-between text-center h-[300px] hover:shadow-md transition"
             >
-              <img
+              <Image
                 src={review.image}
                 alt={review.name}
                 className="mx-auto rounded-full w-16 h-16 object-cover mb-3 border-2 border-green-400"

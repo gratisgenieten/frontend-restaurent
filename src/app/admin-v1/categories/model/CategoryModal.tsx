@@ -37,6 +37,16 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
     }
   );
 
+  // useEffect(() => {
+  //   if (formData.parent_id) {
+  //     const parent = allCategories.find(c => c.category_id === formData.parent_id);
+  //     if (parent) {
+  //       setFormData(prev => ({ ...prev, level: parent.level + 1 }));
+  //     }
+  //   } else {
+  //     setFormData(prev => ({ ...prev, level: 0 }));
+  //   }
+  // }, [formData.parent_id]);
   useEffect(() => {
     if (formData.parent_id) {
       const parent = allCategories.find(c => c.category_id === formData.parent_id);
@@ -46,7 +56,8 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
     } else {
       setFormData(prev => ({ ...prev, level: 0 }));
     }
-  }, [formData.parent_id]);
+  }, [formData.parent_id, allCategories]);
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

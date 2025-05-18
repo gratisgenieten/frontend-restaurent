@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
@@ -61,7 +62,7 @@ const ClientReviewSection = () => {
               <div className="flex items-center justify-between">
                 {/* Left section: Image + name + username */}
                 <div className="flex items-center space-x-4">
-                  <img src={r.image} alt={r.name} className="w-12 h-12 rounded-full object-cover" />
+                  <Image src={r.image} alt={r.name} className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">{r.name}</h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{r.username}</p>

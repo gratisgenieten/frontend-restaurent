@@ -27,7 +27,7 @@ interface BookingData {
 // Interface for the component props
 interface EnhancedDatePickerCustomDayProps {
 	dayOfMonth: number;
-	date: date;
+	date: Date | any;
 }
 
 const EnhancedDatePickerCustomDay: React.FC<EnhancedDatePickerCustomDayProps> = (props) => {
