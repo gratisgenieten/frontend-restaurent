@@ -18,11 +18,12 @@ import {
 } from 'react-icons/fa';
 import pic2 from "@/images/custom-home/pic.jpg";
 import QrScanner from './(components)/QrScanner';
+import CustomerReviews from '../reviews/(components)/CustomerReviews';
 export default function QrLandingPage() {
     return (
         <div className="bg-gradient-to-br from-[#f0f4ff] via-[#fefeff] to-[#e9f6ff] dark:from-gray-900 dark:to-gray-950 min-h-screen w-full font-inter text-gray-800 dark:text-gray-100 transition-colors">
-            <section className="relative w-full min-h-screen flex md:flex-row flex-col items-center justify-center  overflow-hidden">
-                <div className="relative w-full h-auto md:min-h-screen md:w-3/4 flex items-center justify-center p-8 text-white overflow-hidden">
+            <section className="relative w-full mx-auto max-w-5xl min-h-screen flex  flex-col items-center justify-center  overflow-hidden">
+                <div className="relative w-full h-auto  md:w-3/4 flex items-center justify-center p-8 text-white overflow-hidden">
                     <Image
                         src={pic2}
                         alt="QR Hero"
@@ -40,11 +41,16 @@ export default function QrLandingPage() {
                             Get your free €5 bonus in just 10 seconds.
                         </p>
                         <FaGift className="text-red-400 text-4xl mx-auto animate-bounce" />
-                        <QrScanner />
+                        {/* <QrScanner /> */}
+                        <div className='flex items-center justify-center w-fit mx-auto cursor-pointer px-4 py-2 gap-2 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition'>
+                            <FaWhatsapp className="text-green-400 text-4xl" />
+                            <p className="text-lg font-semibold"> 5€ bonus</p>
+                        </div>
+
                     </div>
 
                 </div>
-                <div className="relative w-full  min-h-screen md:w-3/4 z-10 w-full p-4 sm:p-6 overflow-y-auto">
+                <div className="relative w-full  min-h-screen md:w-3/4 z-10 w-full py-4 sm:py-6 overflow-y-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="col-span-1 sm:col-span-2 bg-gradient-to-r from-white via-gray-100 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 rounded-2xl px-4 py-4 shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row sm:items-center gap-3 w-full">
                             <div className="relative w-full">
@@ -73,7 +79,7 @@ export default function QrLandingPage() {
                                 What are your hours today?
                             </div>
                         </div>
-                        <div className="col-span-1 sm:col-span-2 rounded-xl   shadow  flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <div className="col-span-1 sm:col-span-2 rounded-xl    flex flex-col sm:flex-row items-center justify-center gap-4">
                             {[{
                                 icon: <FaStar className="text-yellow-400 text-lg" />,
                                 label: 'Refer friends',
@@ -118,8 +124,9 @@ export default function QrLandingPage() {
                         </div>
 
                         <div className="col-span-1 sm:col-span-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow p-4 flex flex-col items-center justify-center text-center">
-                            <FaHeart className="text-red-500 text-2xl mb-1 animate-ping" />
-                            <p className="text-sm font-semibold text-black dark:text-white">Loving it?</p>
+                            <CustomerReviews/>
+                            {/* <FaHeart className="text-red-500 text-2xl mb-1 animate-ping" /> */}
+                            <p className="text-sm font-semibold text-black dark:text-white mt-4">Loving it?</p>
                             <p className="text-xs text-gray-600 dark:text-gray-400">Tell a friend or leave a review</p>
                         </div>
                     </div>

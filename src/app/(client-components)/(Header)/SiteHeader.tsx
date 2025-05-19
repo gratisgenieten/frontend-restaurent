@@ -253,13 +253,16 @@ const SiteHeader = () => {
 				return <Header3 className={headerClassName} />
 		}
 	}
-
+		const hideLayout = pathname.startsWith('/qr')
+		if (hideLayout) {
+			return null
+		}
 	return (
-		<>
+		<div className="">
 			{/* {renderControlSelections()} */}
 			{renderHeader()}
 			<div ref={anchorRef} className="invisible absolute h-1"></div>
-		</>
+		</div>
 	)
 }
 

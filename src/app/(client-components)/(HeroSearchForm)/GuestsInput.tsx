@@ -1,151 +1,76 @@
-'use client'
+'use client';
 
-import React, { Fragment, useState } from 'react'
-import {
-	Popover,
-	PopoverButton,
-	PopoverPanel,
-	Transition,
-} from '@headlessui/react'
-import NcInputNumber from '@/components/NcInputNumber'
-import { FC } from 'react'
-import ClearDataButton from './ClearDataButton'
-import ButtonSubmit from './ButtonSubmit'
-import { PathName } from '@/routers/types'
-import { UserPlusIcon } from '@heroicons/react/24/outline'
-import { GuestsObject } from '../type'
-import T from '@/utils/getT'
+import React, { FC, useState } from 'react';
+import { UserPlusIcon } from '@heroicons/react/24/outline';
+import ButtonSubmit from './ButtonSubmit';
+import { PathName } from '@/routers/types';
+import T from '@/utils/getT';
 
 export interface GuestsInputProps {
-	fieldClassName?: string
-	className?: string
-	buttonSubmitHref?: PathName
-	hasButtonSubmit?: boolean
+	fieldClassName?: string;
+	className?: string;
+	buttonSubmitHref?: PathName;
+	hasButtonSubmit?: boolean;
 }
 
 const GuestsInput: FC<GuestsInputProps> = ({
 	fieldClassName = 'nc-hero-field-padding',
-	className = 'nc-flex-1 ',
+	className = 'nc-flex-1',
 	buttonSubmitHref = '/listing-stay-map',
 	hasButtonSubmit = true,
 }) => {
-	const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(2)
-	const [guestChildrenInputValue, setGuestChildrenInputValue] = useState(1)
-	const [guestInfantsInputValue, setGuestInfantsInputValue] = useState(1)
+	const [guestCount, setGuestCount] = useState(1);
 
-	const handleChangeData = (value: number, type: keyof GuestsObject) => {
-		let newValue = {
-			guestAdults: guestAdultsInputValue,
-			guestChildren: guestChildrenInputValue,
-			guestInfants: guestInfantsInputValue,
-		}
-		if (type === 'guestAdults') {
-			setGuestAdultsInputValue(value)
-			newValue.guestAdults = value
-		}
-		if (type === 'guestChildren') {
-			setGuestChildrenInputValue(value)
-			newValue.guestChildren = value
-		}
-		if (type === 'guestInfants') {
-			setGuestInfantsInputValue(value)
-			newValue.guestInfants = value
-		}
-	}
+	const handleIncrease = (e:any) => {		
+		e.stopPropagation();
+		if (guestCount < 10) setGuestCount(guestCount + 1);
+	};
 
-	const totalGuests =
-		guestChildrenInputValue + guestAdultsInputValue + guestInfantsInputValue
+	const handleDecrease = (e:any) => {
+		e.stopPropagation();
+		if (guestCount > 1) setGuestCount(guestCount - 1);
+	};
 
 	return (
-		<Popover className={`relative flex ${className}`}>
-			{({ open }) => (
-				<>
-					<div
-						className={`z-10 flex flex-1 items-center focus:outline-none ${
-							open ? 'nc-hero-field-focused' : ''
-						}`}
-					>
-						<PopoverButton
-							className={`relative z-10 flex flex-1 items-center text-start ${fieldClassName} gap-x-3 focus:outline-none`}
-						>
-							<div className="text-neutral-300 dark:text-neutral-400">
-								<UserPlusIcon className="h-5 w-5 lg:h-7 lg:w-7" />
-							</div>
-							<div className="flex-grow">
-								<span className="block font-semibold xl:text-lg">
-									{totalGuests || ''} {T['HeroSearchForm']['Guests']}
-								</span>
-								<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
-									{totalGuests
-										? T['HeroSearchForm']['Guests']
-										: T['HeroSearchForm']['Add guests']}
-								</span>
-							</div>
-
-							{!!totalGuests && open && (
-								<ClearDataButton
-									onClick={() => {
-										setGuestAdultsInputValue(0)
-										setGuestChildrenInputValue(0)
-										setGuestInfantsInputValue(0)
-									}}
-								/>
-							)}
-						</PopoverButton>
-
-						{/* BUTTON SUBMIT OF FORM */}
-						{hasButtonSubmit && (
-							<div className="pe-2 xl:pe-4">
-								<ButtonSubmit href={buttonSubmitHref} />
-							</div>
-						)}
+		<div className={`relative flex items-center justify-between ${className}`}>
+			<div
+				className={`flex items-center justify-between w-full rounded-full bg-white dark:bg-neutral-800 px-4 py-3 focus:shadow-lg focus:border focus:border-neutral-200 dark:border-neutral-700 ${fieldClassName}`}
+			>
+				<div className="flex items-center gap-3">
+					<UserPlusIcon className="w-7 h-7 text-neutral-500 dark:text-neutral-300" />
+					<div className="flex flex-col">
+						<span className="text-lg font-semibold text-neutral-900 dark:text-white">
+							{guestCount} Guest{guestCount > 1 ? 's' : ''}
+						</span>
+						<span className="text-md text-neutral-500">{T['HeroSearchForm']['Guests']}</span>
 					</div>
-
-					{open && (
-						<div className="absolute -start-0.5 end-0.5 top-1/2 z-0 h-8 -translate-y-1/2 self-center bg-white dark:bg-neutral-800" />
-					)}
-					<Transition
-						as={Fragment}
-						enter="transition ease-out duration-200"
-						enterFrom="opacity-0 translate-y-1"
-						enterTo="opacity-100 translate-y-0"
-						leave="transition ease-in duration-150"
-						leaveFrom="opacity-100 translate-y-0"
-						leaveTo="opacity-0 translate-y-1"
+				</div>
+				<div className="flex items-center gap-3">
+					<button
+						type="button"
+						onClick={handleDecrease}
+						className="w-8 h-8 rounded-full text-xl flex items-center justify-center bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-white"
 					>
-						<PopoverPanel className="absolute end-0 top-full z-10 mt-3 w-full max-w-sm rounded-3xl bg-white px-4 py-5 shadow-xl dark:bg-neutral-800 sm:min-w-[340px] sm:px-8 sm:py-6">
-							<NcInputNumber
-								className="w-full"
-								defaultValue={guestAdultsInputValue}
-								onChange={(value) => handleChangeData(value, 'guestAdults')}
-								max={10}
-								min={1}
-								label={T['HeroSearchForm']['Adults']}
-								desc={T['HeroSearchForm']['Ages 13 or above']}
-							/>
-							<NcInputNumber
-								className="mt-6 w-full"
-								defaultValue={guestChildrenInputValue}
-								onChange={(value) => handleChangeData(value, 'guestChildren')}
-								max={4}
-								label={T['HeroSearchForm']['Children']}
-								desc={T['HeroSearchForm']['Ages 2–12']}
-							/>
+						−
+					</button>
+					<span className="text-base font-medium w-4 text-center text-neutral-800 dark:text-white">
+						{guestCount}
+					</span>
+					<button
+						type="button"
+						onClick={handleIncrease}
+						className="w-8 h-8 rounded-full text-xl flex items-center justify-center bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-white"
+					>
+						+
+					</button>
+				</div>
+			</div>
+			<div className=" mr-4">
+				<ButtonSubmit href={buttonSubmitHref} />
+			</div>
 
-							<NcInputNumber
-								className="mt-6 w-full"
-								defaultValue={guestInfantsInputValue}
-								onChange={(value) => handleChangeData(value, 'guestInfants')}
-								max={4}
-								label={T['HeroSearchForm']['Infants']}
-								desc={T['HeroSearchForm']['Ages 0–2']}
-							/>
-						</PopoverPanel>
-					</Transition>
-				</>
-			)}
-		</Popover>
-	)
-}
+		</div>
+	);
+};
 
-export default GuestsInput
+export default GuestsInput;
