@@ -1,23 +1,24 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import img from "@/images/pic-2.jpg";
 
 const reviews = [
   {
     name: 'John Deo',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    image: img,
     rating: 5,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.',
   },
   {
     name: 'John Deo',
-    image: 'https://randomuser.me/api/portraits/men/22.jpg',
+    image: img,
     rating: 4.5,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.',
   },
   {
     name: 'John Deo',
-    image: 'https://randomuser.me/api/portraits/women/65.jpg',
+    image: img,
     rating: 5,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.',
   },
@@ -56,6 +57,8 @@ const CustomerReviews = () => {
               <Image
                 src={review.image}
                 alt={review.name}
+                 width={64}
+                 height={64}
                 className="mx-auto rounded-full w-16 h-16 object-cover mb-3 border-2 border-green-400"
               />
               <p className="text-xs text-gray-600 dark:text-gray-300 mb-3">{review.text}</p>

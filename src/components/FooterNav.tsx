@@ -47,9 +47,9 @@ const NAV: NavItem[] = [
 
 const FooterNav = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  
   const pathname = usePathname();
-
+	const hideLayout = pathname.startsWith('/qr')
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", handleEvent);
@@ -126,6 +126,7 @@ const FooterNav = () => {
       </div>
     );
   };
+  if(hideLayout) {return null}
 
   return (
     <div

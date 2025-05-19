@@ -25,6 +25,7 @@
     "eslint": "8.54.0",
     "eslint-config-next": "^14.2.20",
     "framer-motion": "^10.16.5",
+    "jsqr": "^1.4.0",
     "lodash": "^4.17.21",
     "next": "^14.2.20",
     "rc-slider": "^10.4.0",

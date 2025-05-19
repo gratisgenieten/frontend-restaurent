@@ -11,6 +11,8 @@ import ThemeProvider from './theme-provider'
 import Footer2 from '@/components/Footer2'
 import Footer3 from '@/components/Footer3'
 import Footer4 from '@/components/Footer4'
+import { usePathname } from 'next/navigation'
+
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -18,14 +20,13 @@ const poppins = Poppins({
 	weight: ['300', '400', '500', '600', '700'],
 })
 
+
 export const metadata: Metadata = {
-  title: "GratisGenieten",
-  description:
-    "Spaar online, geniet lokaal: Shop bij 2000+ webshops, geniet gratis bij lokale favorieten in jouw stad",
-  keywords:
-    "GratisGenieten, Booking online, Spaar online, geniet lokaal, webshops",
-  // viewport:
-  // 	'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+	title: "GratisGenieten",
+	description:
+		"Spaar online, geniet lokaal: Shop bij 2000+ webshops, geniet gratis bij lokale favorieten in jouw stad",
+	keywords:
+		"GratisGenieten, Booking online, Spaar online, geniet lokaal, webshops",
 };
 
 export default function RootLayout({
@@ -35,6 +36,7 @@ export default function RootLayout({
 	children: React.ReactNode
 	params: any
 }) {
+
 	return (
 		<html lang="en" className={poppins.className}>
 			<ThemeProvider>
@@ -43,17 +45,15 @@ export default function RootLayout({
 						<SiteHeader />
 						{children}
 						<FooterNav />
-
-						{/* Chose footer style here!!!! */}
-						{/* <Footer /> */}
 						<Footer2 />
-						{/* <Footer3 /> */}
-						{/* <Footer4 /> */}
 					</div>
-
 					<ClientCommons />
 				</body>
 			</ThemeProvider>
 		</html>
 	)
 }
+{/* Chose footer style here!!!! */ }
+{/* <Footer /> */ }
+{/* <Footer3 /> */ }
+{/* <Footer4 /> */ }

@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import img from "@/images/pic-2.jpg";
 
 const reviews = [
   {
     name: 'Touseeq Ijaz',
     username: '@touseeqjazweb',
-    image: 'https://randomuser.me/api/portraits/men/75.jpg',
+    image: img,
     stars: 4,
     review:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.',
@@ -14,7 +15,7 @@ const reviews = [
   {
     name: 'J.K Rowling',
     username: '@jkrowling',
-    image: 'https://randomuser.me/api/portraits/women/65.jpg',
+    image: img,
     stars: 5,
     review:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.',
@@ -22,7 +23,7 @@ const reviews = [
   {
     name: 'Harry Potter',
     username: '@DanielRedclief',
-    image: 'https://randomuser.me/api/portraits/men/23.jpg',
+    image: img,
     stars: 4,
     review:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.',
@@ -30,7 +31,7 @@ const reviews = [
   {
     name: 'Oliva',
     username: '@Olivaaward',
-    image: 'https://randomuser.me/api/portraits/women/22.jpg',
+    image: img,
     stars: 5,
     review:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.',

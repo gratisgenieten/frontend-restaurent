@@ -186,6 +186,11 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 		id: ncNanoId(),
 		href: '/blog',
 		name: 'Blog',
+		type: 'dropdown',
+		children: [
+			{ id: ncNanoId(), href: '/reviews', name: 'Reviews' },
+			{ id: ncNanoId(), href: '/clients', name: 'Clients' },
+		]
 		// type: 'dropdown',
 		// children: demoChildMenus,
 		// isNew: true,
@@ -198,22 +203,22 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 		// children: demoChildMenus,
 		// isNew: true,
 	},
-	{
-		id: ncNanoId(),
-		href: '/reviews',
-		name: 'Reviews',
-		// type: 'dropdown',
-		// children: demoChildMenus,
-		// isNew: true,
-	},
-	{
-		id: ncNanoId(),
-		href: '/clients',
-		name: 'Clients',
-		// type: 'dropdown',
-		// children: demoChildMenus,
-		// isNew: true,
-	},
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/reviews',
+	// 	name: 'Reviews',
+	// 	// type: 'dropdown',
+	// 	// children: demoChildMenus,
+	// 	// isNew: true,
+	// },
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/clients',
+	// 	name: 'Clients',
+	// 	// type: 'dropdown',
+	// 	// children: demoChildMenus,
+	// 	// isNew: true,
+	// },
 	{
 		id: ncNanoId(),
 		href: '/reservations',
@@ -258,7 +263,15 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 			{ id: ncNanoId(), href: '/admin-v1/universal-status', name: 'Universal Status' },
 			{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
 		]
-	}
+	},
+	{
+		id: ncNanoId(),
+		href: '/qr',
+		name: 'Qr code',
+		// type: 'dropdown',
+		// children: demoChildMenus,
+		// isNew: true,
+	},
 
 	// {
 	// 	id: ncNanoId(),
