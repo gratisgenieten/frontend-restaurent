@@ -5,6 +5,7 @@ import CardAuthorBox2 from '@/components/CardAuthorBox2'
 import Heading from '@/shared/Heading'
 import { DEMO_AUTHORS } from '@/data/authors'
 import { AuthorType } from '@/data/types'
+import { StaticImageData } from 'next/image'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import T from '@/utils/getT'
@@ -34,10 +35,10 @@ interface FormData {
   countryCode: string
   phoneNumber: string
   email: string
-  
   // For display purposes
-  avatar: string
+  avatar: string | StaticImageData
 }
+
 
 const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
   className = '',
@@ -117,7 +118,7 @@ const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
       countryCode: author.countryCode || '',
       phoneNumber: author.phoneNumber || '',
       email: author.email || '',
-      avatar: author.avatar || ''
+      avatar: author.avatar || '',
     })
     setTermsAccepted(true) // Assuming terms are accepted for existing records
     setIsModalOpen(true)
@@ -327,7 +328,7 @@ const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
                     type="text"
                     name="avatar"
                     placeholder="Avatar URL (for display)"
-                    value={form.avatar}
+                    value={typeof form.avatar === 'string' ? form.avatar : ''}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border rounded"
                   />
