@@ -258,7 +258,12 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 			{ id: ncNanoId(), href: '/admin-v1/universal-status', name: 'Universal Status' },
 			{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
 		]
-	}
+	},
+	{
+		id: ncNanoId(),
+		href: '/chat',
+		name: 'Chat',
+	},
 
 	// {
 	// 	id: ncNanoId(),
