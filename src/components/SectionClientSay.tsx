@@ -41,6 +41,7 @@ const DEMO_DATA = [
 	},
 ]
 
+
 const SectionClientSay: FC<SectionClientSayProps> = ({
 	className = '',
 	data = DEMO_DATA,
