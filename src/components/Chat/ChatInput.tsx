@@ -93,8 +93,9 @@ const ChatInput: React.FC<ChatInputProps> = ({
   };
 
   return (
-    <div className="border-t px-5 py-3 flex items-end bg-white">
-          {/* Attachments dropdown */}
+    <>
+    <div className="border-t p-3 flex items-end bg-white">
+      {/* Attachments dropdown */}
       <div className="relative mr-3" ref={attachmentsRef}>
         <button 
           className="p-2 rounded-full border bg-blue-500 text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -229,12 +230,13 @@ const ChatInput: React.FC<ChatInputProps> = ({
           } text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
           aria-label="Send message"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transform rotate-0 translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-6 w-6 transform rotate-0 translate-x-0.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+      </svg>      
         </button>
       </div>
     </div>
+    </>
   );
 };
 

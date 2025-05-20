@@ -58,7 +58,7 @@ const ChatApplication: React.FC = () => {
       />
 
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden">
         <ChatApp 
           chat={activeChat}
           currentUser={currentUser}
