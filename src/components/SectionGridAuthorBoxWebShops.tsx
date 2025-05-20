@@ -8,7 +8,7 @@ import React, { FC, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import T from '@/utils/getT'
-import ReservationsDatesRangeInput from '@/app/reservations/ReservationsDatesRangeInput';
+import ReservationsDatesRangeInput from '@/app/account/reservations/ReservationsDatesRangeInput';
 
 export interface SectionGridAuthorBoxWebShopsProps {
 	className?: string

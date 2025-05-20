@@ -221,7 +221,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 	// },
 	{
 		id: ncNanoId(),
-		href: '/reservations',
+		href: '/account/reservations',
 		name: 'Reservations',
 		// type: 'dropdown',
 		// children: demoChildMenus,
@@ -256,9 +256,9 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 			{ id: ncNanoId(), href: '/admin-v1/partners', name: 'Partners' },
 			{ id: ncNanoId(), href: '/admin-v1/permission', name: 'Permissions' },
 			{ id: ncNanoId(), href: '/admin-v1/referrals', name: 'Referrals' },
-			{ id: ncNanoId(), href: '/account/reservation', name: 'Reservations' },
+			// { id: ncNanoId(), href: '/account/reservation', name: 'Reservations' },
 			{ id: ncNanoId(), href: '/admin-v1/role', name: 'Roles' },
-			{ id: ncNanoId(), href: '/admin-v1/status-history', name: 'Status History' },
+			// { id: ncNanoId(), href: '/admin-v1/status-history', name: 'Status History' },
 			{ id: ncNanoId(), href: '/admin-v1/transactions', name: 'Transactions' },
 			{ id: ncNanoId(), href: '/admin-v1/universal-status', name: 'Universal Status' },
 			{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
@@ -271,11 +271,6 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 		// type: 'dropdown',
 		// children: demoChildMenus,
 		// isNew: true,
-	},
-	{
-		id: ncNanoId(),
-		href: '/chat',
-		name: 'Chat',
 	},
 
 	// {

@@ -5,6 +5,7 @@ import ButtonPrimary from '@/shared/ButtonPrimary';
 import NcModal from '@/shared/NcModal';
 import StatusCard from '@/components/StatusCard';
 import AffiliateClickModal, { AffiliateClickData } from './model/AffiliateClickModal';
+import ReservationsDatesRangeInput from '@/app/account/reservations/ReservationsDatesRangeInput';
 
 const initialClicks: AffiliateClickData[] = [
     {
@@ -21,10 +22,19 @@ const initialClicks: AffiliateClickData[] = [
     },
 ];
 
+
+const DEAL_OPTIONS = [
+    { value: '', label: 'All Deal' },
+    { value: 'deal-1', label: 'Deal A' },
+    { value: 'deal-2', label: 'Deal B' },
+]
+
+
 const AffiliateClicksPage = () => {
     const [clicks, setClicks] = useState<AffiliateClickData[]>(initialClicks);
     const [editingClick, setEditingClick] = useState<AffiliateClickData | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedDeal, setSelectedDeal] = useState('')
 
     const handleSave = (data: AffiliateClickData) => {
         if (data.click_id) {
@@ -50,8 +60,15 @@ const AffiliateClicksPage = () => {
                 <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                     Affiliate Clicks
                 </h2>
-                <ButtonPrimary onClick={() => setIsModalOpen(true)}>+ Add Click</ButtonPrimary>
+
+                <div className="flex items-center gap-4">
+                    <div className="w-full sm:w-auto">
+                        <ReservationsDatesRangeInput />
+                    </div>
+                    <ButtonPrimary onClick={() => setIsModalOpen(true)}>+ Add Click</ButtonPrimary>
+                </div>
             </div>
+
 
             <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4">
                 {clicks.map((click) => (

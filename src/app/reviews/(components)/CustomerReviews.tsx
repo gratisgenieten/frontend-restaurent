@@ -52,7 +52,7 @@ const CustomerReviews = () => {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm px-6 py-6 rounded-lg flex flex-col justify-between text-center h-[300px] hover:shadow-md transition"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm px-6 py-6 rounded-lg flex flex-col justify-between text-center h-[310px] hover:shadow-md transition"
             >
               <Image
                 src={review.image}
@@ -61,7 +61,7 @@ const CustomerReviews = () => {
                  height={64}
                 className="mx-auto rounded-full w-16 h-16 object-cover mb-3 border-2 border-green-400"
               />
-              <p className="text-xs text-gray-600 dark:text-gray-300 mb-3">{review.text}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{review.text}</p>
               <h3 className="font-semibold text-md text-gray-800 dark:text-white mb-1">{review.name}</h3>
               <StarRating rating={review.rating} />
             </div>

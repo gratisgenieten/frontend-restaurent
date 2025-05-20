@@ -23,7 +23,7 @@ import s5 from '@/images/custom-home/s5.jpg'
 const DEMO_CATS: TaxonomyType[] = [
   {
     id: "1",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "Breda",
     taxonomy: "category",
     thumbnail:
@@ -31,7 +31,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "2",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "DenBosch",
     taxonomy: "category",
     thumbnail:
@@ -39,7 +39,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "3",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "Eindhoven",
     taxonomy: "category",
     thumbnail:
@@ -47,7 +47,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "4",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "Tilburg",
     taxonomy: "category",
     thumbnail:
@@ -55,7 +55,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "5",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "Tokyo",
     taxonomy: "category",
     thumbnail:
@@ -63,7 +63,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "6",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "Maldives",
     taxonomy: "category",
     thumbnail:
@@ -71,7 +71,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "7",
-    href: "/listing-stay-map",
+    href: "/deals",
     name: "Italy",
     taxonomy: "category",
     thumbnail:

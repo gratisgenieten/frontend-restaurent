@@ -1,6 +1,9 @@
 'use client'
 
 import React, { Fragment, useState, FC } from 'react'
+import { nl } from 'date-fns/locale'
+import { registerLocale } from 'react-datepicker'
+registerLocale('nl', nl)
 import {
 	Popover,
 	PopoverButton,
@@ -35,10 +38,10 @@ const StayDatesSingleInput: FC<StayDatesSingleInputProps> = ({
 			<div className="flex-grow text-start">
 				<span className="block font-semibold xl:text-lg">
 					{selectedDate
-						? selectedDate.toLocaleDateString('en-US', {
-								month: 'short',
-								day: '2-digit',
-						  })
+						? selectedDate.toLocaleDateString('nl-NL', {
+							month: 'long',
+							day: '2-digit',
+						})
 						: 'Add date'}
 				</span>
 				<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
@@ -53,9 +56,8 @@ const StayDatesSingleInput: FC<StayDatesSingleInputProps> = ({
 			{({ open }) => (
 				<>
 					<PopoverButton
-						className={`relative flex flex-1 items-center gap-x-3 p-3 focus:outline-none ${
-							open ? 'shadow-lg' : ''
-						}`}
+						className={`relative flex flex-1 items-center gap-x-3 p-3 focus:outline-none ${open ? 'shadow-lg' : ''
+							}`}
 					>
 						{renderInput()}
 						{selectedDate && open && (
@@ -80,6 +82,7 @@ const StayDatesSingleInput: FC<StayDatesSingleInputProps> = ({
 									monthsShown={2}
 									showPopperArrow={false}
 									inline
+									locale={nl}
 									renderCustomHeader={(p) => (
 										<DatePickerCustomHeaderTwoMonth {...p} />
 									)}

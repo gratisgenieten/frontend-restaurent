@@ -43,14 +43,14 @@ const ReservationsDatesRangeInput: FC<ReservationsDatesRangeInputProps> = ({
 				</div>
 				<div className="flex-grow text-start">
 					<span className="block font-semibold xl:text-lg">
-						{startDate?.toLocaleDateString('en-US', {
+						{startDate?.toLocaleDateString('nl-NL', {
 							month: 'short',
 							day: '2-digit',
 						}) || T['HeroSearchForm']['Add dates']}
 						{endDate
 							? ' - ' +
-								endDate?.toLocaleDateString('en-US', {
-									month: 'short',
+								endDate?.toLocaleDateString('nl-NL', {
+									month: 'long',
 									day: '2-digit',
 								})
 							: ''}
