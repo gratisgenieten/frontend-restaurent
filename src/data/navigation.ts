@@ -272,6 +272,11 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 		// children: demoChildMenus,
 		// isNew: true,
 	},
+	{
+		id: ncNanoId(),
+		href: '/chat',
+		name: 'Chat',
+	},
 
 	// {
 	// 	id: ncNanoId(),
