@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { ChatMessageProps } from './types';
+import Image from 'next/image';
 
 const ChatMessage: React.FC<ChatMessageProps> = ({
   id,
@@ -69,7 +70,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
   return (
     <div className={`flex mb-4 ${isCurrentUser ? 'justify-end' : 'justify-start'}`}>
       {!isCurrentUser && (
-        <img 
+        <Image
           src={senderAvatar} 
           alt={senderName} 
           className="w-8 h-8 rounded-full object-cover mr-3 mt-1"
@@ -119,7 +120,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
       </div>
       
       {isCurrentUser && (
-        <img 
+        <Image
           src={senderAvatar} 
           alt={senderName} 
           className="w-8 h-8 rounded-full object-cover ml-3 mt-1"

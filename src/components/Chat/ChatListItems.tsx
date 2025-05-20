@@ -25,7 +25,7 @@ const ChatListItem: React.FC<ChatListItemProps> = ({ chat, isActive, onClick }) 
       onClick={onClick}
     >
       <div className="relative mr-3 flex-shrink-0">
-        <img 
+        <Image
           src={chat.user.avatar.toString()} 
           alt={chat.user.name} 
           className="w-12 h-12 rounded-full object-cover"

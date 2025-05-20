@@ -83,6 +83,7 @@ const DEMO_CATS: TaxonomyType[] = [
 		taxonomy: 'category',
 		thumbnail:
 			'https://images.pexels.com/photos/9039238/pexels-photo-9039238.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+			
 	},
 ]
 
@@ -103,10 +104,6 @@ const SectionSliderNewCategoriesDynamic: FC<SectionSliderNewCategoriesDynamicPro
 		switch (categoryCardType) {
 			case 'card3':
 				return <CardCategoryCustom3 taxonomy={item} />
-			// case 'card4':
-			// 	return <CardCategory4 taxonomy={item} />
-			// case 'card5':
-			// 	return <CardCategory5 taxonomy={item} />
 			default:
 				return <CardCategoryCustom3 taxonomy={item} />
 		}
@@ -118,10 +115,10 @@ const SectionSliderNewCategoriesDynamic: FC<SectionSliderNewCategoriesDynamicPro
 				{heading}
 			</Heading>
 
-			<div className="relative flow-root">
+			<div className="relative flow-root  ">
 				<div
 					ref={sliderRef}
-					className="hiddenScrollbar relative -mx-2 flex snap-x snap-mandatory overflow-x-auto lg:-mx-3.5"
+					className="hiddenScrollbar hidden md:flex relative -mx-2 flex snap-x snap-mandatory md:min-h-[150px]  overflow-x-auto lg:-mx-3.5"
 				>
 					{categories.map((item, indx) => (
 						<div
@@ -136,13 +133,13 @@ const SectionSliderNewCategoriesDynamic: FC<SectionSliderNewCategoriesDynamicPro
 				<PrevBtn
 					style={{ visibility: isAtStart ? 'hidden' : 'visible' }}
 					onClick={scrollToPrevSlide}
-					className=" block md:hidden absolute -start-3 top-[40%] z-[1] h-9 w-9 -translate-y-1/2 text-lg xl:-start-6 xl:h-12 xl:w-12"
+					className=" hidden absolute -start-3 top-[40%] z-[1] h-9 w-9 -translate-y-1/2 text-lg xl:-start-6 xl:h-12 xl:w-12"
 				/>
 
 				<NextBtn
 					style={{ visibility: isAtEnd ? 'hidden' : 'visible' }}
 					onClick={scrollToNextSlide}
-					className=" block md:hidden absolute -end-3 top-[40%] z-[1] h-9 w-9 -translate-y-1/2 text-lg xl:-end-6 xl:h-12 xl:w-12"
+					className=" hidden absolute -end-3 top-[40%] z-[1] h-9 w-9 -translate-y-1/2 text-lg xl:-end-6 xl:h-12 xl:w-12"
 				/>
 			</div>
 		</div>

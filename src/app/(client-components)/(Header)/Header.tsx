@@ -20,11 +20,11 @@ const Header: FC<HeaderProps> = ({ navType = "MainNav1", className = "" }) => {
   };
 
   return (
-    <div
-      className={`nc-Header sticky top-0 w-full left-0 right-0 z-40 nc-header-bg ${className}`}
+    <header
+      className={`nc-Header sticky top-0 w-full left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md ${className}`}
     >
       {renderNav()}
-    </div>
+    </header>
   );
 };
 

@@ -222,6 +222,7 @@ const SectionGridAuthorBoxCustom: FC<SectionGridAuthorBoxCustomProps> = ({
               <CardAuthorBox
                 index={index < 3 ? index + 1 : undefined}
                 author={author}
+                className="border border-green-500"
               />
               {/* Edit button code remains commented out as in original */}
             </div>

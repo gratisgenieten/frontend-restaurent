@@ -1,72 +1,40 @@
-import React, { FC } from 'react'
-import TabFilters from './TabFilters'
-import Heading2 from '@/shared/Heading2'
-import FlightCard, { FlightCardProps } from '@/components/FlightCard'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-import T from '@/utils/getT'
+'use client';
+
+import React, { FC } from 'react';
+import TabFilters from './TabFilters';
+import Heading2 from '@/shared/Heading2';
+import FlightCard, { FlightCardProps } from '@/components/FlightCard';
+import ButtonPrimary from '@/shared/ButtonPrimary';
+import T from '@/utils/getT';
+import StatusCard from '@/components/StatusCard';
 
 export interface SectionGridFilterCardProps {
-	className?: string
+	className?: string;
 }
 
-const DEMO_DATA: FlightCardProps['data'][] = [
+const cashbackData = [
 	{
-		id: '1',
-		price: '€4,100',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
-			name: 'MediaMarkt',
-		},
+		amount: 5.0,
+		type: 'affiliate_earn',
+		status: 'confirmed',
+		description: 'Cashback from MediaMarkt',
+		userId: 101,
 	},
 	{
-		id: '2',
-		price: '€3,380',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
-			name: ' Coolblue ',
-		},
+		amount: 2.5,
+		type: 'affiliate_earn',
+		status: 'pending',
+		description: 'Cashback from Coolblue',
+		userId: 101,
 	},
 	{
-		id: '3',
-		price: '€2,380',
-		airlines: {
-			logo: 'https://www.gstatic.com/flights/airline_logos/70px/multi.png',
-			name: 'Essent',
-		},
+		amount: 3.8,
+		type: 'wallet_spend',
+		status: 'confirmed',
+		description: 'Wallet used on Essent',
+		userId: 101,
 	},
-	// {
-	// 	id: '1',
-	// 	price: '€4,100',
-	// 	airlines: {
-	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
-	// 		name: 'Korean Air',
-	// 	},
-	// },
-	// {
-	// 	id: '2',
-	// 	price: '€3,380',
-	// 	airlines: {
-	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
-	// 		name: 'Singapore Airlines',
-	// 	},
-	// },
-	// {
-	// 	id: '1',
-	// 	price: '€4,100',
-	// 	airlines: {
-	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/KE.png',
-	// 		name: 'Korean Air',
-	// 	},
-	// },
-	// {
-	// 	id: '2',
-	// 	price: '€3,380',
-	// 	airlines: {
-	// 		logo: 'https://www.gstatic.com/flights/airline_logos/70px/SQ.png',
-	// 		name: 'Singapore Airlines',
-	// 	},
-	// },
-]
+];
 
 const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 	className = '',
@@ -87,17 +55,27 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 			<div className="mb-8 lg:mb-11">
 				<TabFilters />
 			</div>
-			<div className="grid grid-cols-1 gap-6 rounded-3xl lg:bg-neutral-50 lg:p-10 lg:dark:bg-black/20">
-				{DEMO_DATA.map((item, index) => (
-					<FlightCard key={index} data={item} />
+			<div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-6 rounded-3xl lg:bg-neutral-50 lg:p-10 lg:dark:bg-black/20">
+				{/* Integrated cashback status cards */}
+				{cashbackData.map((txn, index) => (
+
+					<StatusCard
+						logo=""
+						title={`€${txn.amount}`}
+						subtitle={`${txn.type} · ${txn.status}`}
+						value={txn.description}
+						valueCaption={`User ID: 23`}
+						key={index}
+					/>
 				))}
 
-				<div className="mt-12 flex items-center justify-center">
+				{/* Show more button */}
+				<div className="col-span-full mt-12 flex items-center justify-center">
 					<ButtonPrimary loading>{T['common']['Show me more']}</ButtonPrimary>
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default SectionGridFilterCard
+export default SectionGridFilterCard;

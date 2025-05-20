@@ -86,6 +86,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: 'Enjoy the great cold',
 		taxonomy: 'category',
 		thumbnail:s1,
+		earningText:"100%"
 	},
 	{
 		id: '2',
@@ -93,6 +94,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: 'Sleep in a floating way',
 		taxonomy: 'category',
 		thumbnail:s2,
+		earningText:"100%"
 	},
 	{
 		id: '3',
@@ -100,6 +102,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: "In the billionaire's house",
 		taxonomy: 'category',
 		thumbnail:s3,
+		earningText:"100%"
 	},
 	{
 		id: '4',
@@ -107,6 +110,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: 'Cool in the deep forest',
 		taxonomy: 'category',
 		thumbnail:s4,
+		earningText:"€1.00"
 	},
 	{
 		id: '5',
@@ -114,6 +118,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 		name: "In the billionaire's house",
 		taxonomy: 'category',
 		thumbnail:s5,
+		earningText:"100%"
 	},
 	
 ]

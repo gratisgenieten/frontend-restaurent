@@ -34,12 +34,12 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({
           onCreateNewChat={onCreateNewChat} 
         />
 
-        <SearchAndFilter
+        {/* <SearchAndFilter
         searchTerm={searchTerm}
         onSearch={setSearchTerm}
         selectedFilter={selectedFilter}
         onFilterChange={setSelectedFilter}
-        />
+        /> */}
         
         {/* <div className="px-4 py-2">
           <ChatSearch 

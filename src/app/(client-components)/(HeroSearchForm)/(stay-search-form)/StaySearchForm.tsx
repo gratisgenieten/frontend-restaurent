@@ -12,7 +12,7 @@ const StaySearchForm: FC<{}> = ({}) => {
 				<div className="h-8 self-center border-r border-slate-200 dark:border-slate-700"></div>
 				<StayDatesSingleInput className="flex-1" />
 				<div className="h-8 self-center border-r border-slate-200 dark:border-slate-700"></div>
-				<GuestsInput className="flex-1 w-full sm:min-w-[60vh]" />
+				<GuestsInput className="flex-1 w-full " />
 			</form>
 		)
 	}

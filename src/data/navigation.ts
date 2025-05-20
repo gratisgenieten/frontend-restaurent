@@ -251,8 +251,8 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 		children: [
 			{ id: ncNanoId(), href: '/admin-v1/affiliate-click', name: 'Affiliate Clicks' },
 			{ id: ncNanoId(), href: '/admin-v1/categories', name: 'Categories' },
-			{ id: ncNanoId(), href: '/account/deals', name: 'Deals' },
-			{ id: ncNanoId(), href: '/admin-v1/options-group', name: 'Options Group' },
+			{ id: ncNanoId(), href: '/deals-form', name: 'Deals Form' },
+			{ id: ncNanoId(), href: '/admin-v1/options', name: 'Options' },
 			{ id: ncNanoId(), href: '/admin-v1/partners', name: 'Partners' },
 			{ id: ncNanoId(), href: '/admin-v1/permission', name: 'Permissions' },
 			{ id: ncNanoId(), href: '/admin-v1/referrals', name: 'Referrals' },
@@ -260,7 +260,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 			{ id: ncNanoId(), href: '/admin-v1/role', name: 'Roles' },
 			// { id: ncNanoId(), href: '/admin-v1/status-history', name: 'Status History' },
 			{ id: ncNanoId(), href: '/admin-v1/transactions', name: 'Transactions' },
-			{ id: ncNanoId(), href: '/admin-v1/universal-status', name: 'Universal Status' },
+			{ id: ncNanoId(), href: '/account/status', name: 'Universal Status' },
 			{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
 		]
 	},

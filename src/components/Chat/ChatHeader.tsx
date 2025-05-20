@@ -1,6 +1,7 @@
 // ChatHeader.tsx
 import React from 'react';
 import { ChatHeaderProps } from '@/components/Chat/types';
+import Image from 'next/image';
 
 const ChatHeader: React.FC<ChatHeaderProps> = ({
   avatar,
@@ -23,7 +24,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
     <div className="flex justify-between items-center p-4 border border-gray-50 shadow-md rounded-t-lg bg-green-50">
       <div className="flex items-center">
         <div className="relative">
-          <img
+          <Image
             src={avatar}
             alt={name}
             className="w-10 h-10 rounded-full object-cover"

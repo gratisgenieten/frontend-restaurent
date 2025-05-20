@@ -159,7 +159,7 @@ const UsersPage = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {users.map((user) => (
+                {users.map((user,index) => (
                     <NcModal
                         key={user.user_id}
                         modalTitle={`Edit User: ${user.name}`}
@@ -173,6 +173,7 @@ const UsersPage = () => {
                                 subtitle={user.email}
                                 value={`₹${user.wallet_balance.toFixed(2)}`}
                                 valueCaption={`Phone: ${user.phone}`}
+                                className={`${index/2 === 0 ? 'border-2 border-green-600 dark:border-2 dark:border-green-400' : 'border-2 border-red-400 dark:border-2 dark:border-red-400 '} cursor-pointer`}
                                 onClick={() => {
                                     setEditingUser(user);
                                     openModal();

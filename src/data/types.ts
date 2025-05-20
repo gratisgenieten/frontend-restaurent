@@ -19,6 +19,7 @@ export interface TaxonomyType {
 	taxonomy: 'category' | 'tag'
 	listingType?: 'stay' | 'experiences' | 'car'
 	count?: number
+	earningText?: string
 }
 
 export interface AuthorType {

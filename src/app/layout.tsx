@@ -42,7 +42,9 @@ export default function RootLayout({
 			<ThemeProvider>
 				<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 					<div>
-						<SiteHeader />
+						<div className='sticky top-0 z-50'>
+							<SiteHeader />
+						</div>
 						{children}
 						<FooterNav />
 						<Footer2 />

@@ -33,6 +33,7 @@ const navigation: {
 		{ name: 'Press', href: '#' },
 	],
 	legal: [
+		{ name: 'Legal', href: '/legal#' },
 		{ name: 'Terms of service', href: '#' },
 		{ name: 'Privacy policy', href: '#' },
 		{ name: 'License', href: '#' },

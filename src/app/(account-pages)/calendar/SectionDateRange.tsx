@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import DatePicker from 'react-datepicker'
 import DatePickerCustomHeaderTwoMonth from '@/components/DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from '@/components/DatePickerCustomDay'
+import Link from 'next/link'
 
 // Sample data for tooltips - replace with your actual data
 const bookingData = {
@@ -42,16 +43,17 @@ const EnhancedDatePickerCustomDay: React.FC<EnhancedDatePickerCustomDayProps> = 
 	const formattedDate: string = date.toISOString().split('T')[0]
 	const dateData: BookingData | undefined = bookingData[formattedDate as keyof typeof bookingData]
 
-	const handleClick = () => {
-		router.push(`/reservations`)
-	}
+	// const handleClick = () => {
+	// 	router.push(`/reservations`)
+	// }
 
 	return (
-		<div
+		<Link
+			href={`/account/reservations`}
 			className="relative"
 			onMouseEnter={() => setShowTooltip(true)}
 			onMouseLeave={() => setShowTooltip(false)}
-			onClick={handleClick}
+			
 		>
 			{/* Your original DatePickerCustomDay component */}
 			<DatePickerCustomDay dayOfMonth={dayOfMonth} date={date} />
@@ -80,7 +82,7 @@ const EnhancedDatePickerCustomDay: React.FC<EnhancedDatePickerCustomDayProps> = 
 					<div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-white border-r border-b"></div>
 				</div>
 			)}
-		</div>
+		</Link>
 	)
 }
 

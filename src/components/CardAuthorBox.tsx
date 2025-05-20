@@ -8,7 +8,7 @@ import Link from 'next/link'
 export interface CardAuthorBoxProps {
 	className?: string
 	author: AuthorType
-	index?: number
+	index?: any
 }
 
 const CardAuthorBox: FC<CardAuthorBoxProps> = ({
@@ -20,7 +20,11 @@ const CardAuthorBox: FC<CardAuthorBoxProps> = ({
 	return (
 		<Link
 			href={href}
-			className={`nc-CardAuthorBox [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] relative flex flex-col items-center justify-center px-3 py-5 text-center sm:px-6 sm:py-7 ${className}`}
+			style={{
+				borderColor: index % 2 === 0 ? '#22c55e' : '#ef4444',
+			}}
+
+			className={`nc-CardAuthorBox [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] border-2  relative flex flex-col items-center justify-center px-3 py-5 text-center sm:px-6 sm:py-7 ${className}`}
 		>
 			{index && (
 				<Badge

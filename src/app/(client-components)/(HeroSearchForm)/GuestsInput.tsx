@@ -38,8 +38,8 @@ const GuestsInput: FC<GuestsInputProps> = ({
 			>
 				<div className="flex items-center gap-3">
 					<UserPlusIcon className="w-7 h-7 text-neutral-500 dark:text-neutral-300" />
-					<div className="flex flex-col">
-						<span className="text-lg font-semibold text-neutral-900 dark:text-white">
+					<div className="flex flex-col min-w-[100px]">
+						<span className="text-lg text-nowrap font-semibold text-neutral-900 dark:text-white">
 							{guestCount} Guest{guestCount > 1 ? 's' : ''}
 						</span>
 						<span className="text-md text-neutral-500">{T['HeroSearchForm']['Guests']}</span>
