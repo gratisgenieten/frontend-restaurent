@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import ButtonCircle from '@/shared/ButtonCircle'
-import rightImg from '@/images/subscribeImg.jpg'
+import rightImg from '@/images/custom-home/lan.jpg';
+
 import Badge from '@/shared/Badge'
 import Input from '@/shared/Input'
 import Image from 'next/image'
@@ -62,9 +63,10 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = '' }) => {
         <Image
           alt="Subscription Image"
           src={rightImg}
-          className="w-1/2 object-cover rounded-lg"
+          className="w-full object-contain rounded-lg"
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 66vw"
+
         />
       </div>
     </div>

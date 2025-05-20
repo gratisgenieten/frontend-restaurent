@@ -69,7 +69,7 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
 		<div
 			className={`nc-HeroSearchForm w-full max-w-6xl py-5 lg:py-0 ${className}`}
 		>
-			{renderTab()}
+			{/* {renderTab()} */}
 			{renderForm()}
 		</div>
 	)

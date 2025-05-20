@@ -4,6 +4,12 @@ import { ClockIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import React, { useState, useRef, useEffect, FC } from 'react'
 import ClearDataButton from './ClearDataButton'
 import T from '@/utils/getT'
+import breda from '@/images/custom-city/breda.jpg'
+import denBosch from '@/images/custom-city/denbosch.jpg';
+import eindhoven from '@/images/custom-city/eindhoven.jpg'
+import tilburg from '@/images/custom-city/tilburg.jpg'
+import Image from 'next/image'
+
 
 export interface LocationInputProps {
 	placeHolder?: string
@@ -62,6 +68,13 @@ const LocationInput: FC<LocationInputProps> = ({
 		setShowPopover(false)
 	}
 
+	const cityImages: Record<string, any> = {
+		Breda: breda,
+		DenBosch: denBosch,
+		Eindhoven: eindhoven,
+		Tilburg: tilburg,
+	};
+
 	const renderRecentSearches = () => {
 		return (
 			<>
@@ -70,10 +83,10 @@ const LocationInput: FC<LocationInputProps> = ({
 				</h3>
 				<div className="mt-2">
 					{[
-						'Hamptons, Suffolk County, NY',
-						'Las Vegas, NV, United States',
-						'Ueno, Taito, Tokyo',
-						'Ikebukuro, Toshima, Tokyo',
+						'Breda',
+						'DenBosch',
+						'Eindhoven',
+						'Tilburg',
 					].map((item) => (
 						<span
 							onClick={() => handleSelectLocation(item)}
@@ -81,7 +94,13 @@ const LocationInput: FC<LocationInputProps> = ({
 							className="flex cursor-pointer items-center gap-x-3 px-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 sm:gap-x-4 sm:px-8"
 						>
 							<span className="block text-neutral-400">
-								<ClockIcon className="h-4 w-4 sm:h-6 sm:w-6" />
+								<Image
+									src={cityImages[item]}
+									alt={item}
+									width={36}
+									height={36}
+									className="rounded-full h-10 w-10 object-cover"
+								/>
 							</span>
 							<span className="block font-medium text-neutral-700 dark:text-neutral-200">
 								{item}
@@ -97,10 +116,10 @@ const LocationInput: FC<LocationInputProps> = ({
 		return (
 			<>
 				{[
-					'Ha Noi, Viet Nam',
-					'San Diego, CA',
-					'Humboldt Park, Chicago, IL',
-					'Bangor, Northern Ireland',
+					'Breda',
+					'DenBosch',
+					'Eindhoven',
+					'Tilburg',
 				].map((item) => (
 					<span
 						onClick={() => handleSelectLocation(item)}
@@ -108,7 +127,13 @@ const LocationInput: FC<LocationInputProps> = ({
 						className="flex cursor-pointer items-center gap-x-3 px-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 sm:gap-x-4 sm:px-8"
 					>
 						<span className="block text-neutral-400">
-							<ClockIcon className="h-4 w-4 sm:h-6 sm:w-6" />
+							<Image
+									src={cityImages[item]}
+									alt={item}
+									width={36}
+									height={36}
+									className="rounded-full h-10 w-10 object-cover"
+								/>
 						</span>
 						<span className="block font-medium text-neutral-700 dark:text-neutral-200">
 							{item}
@@ -123,9 +148,8 @@ const LocationInput: FC<LocationInputProps> = ({
 		<div className={`relative flex ${className}`} ref={containerRef}>
 			<div
 				onClick={() => setShowPopover(true)}
-				className={`nc-hero-field-padding relative z-10 flex flex-1 flex-shrink-0 cursor-pointer items-center gap-x-3 text-left focus:outline-none ${
-					showPopover ? 'nc-hero-field-focused' : ''
-				}`}
+				className={`nc-hero-field-padding relative z-10 flex flex-1 flex-shrink-0 cursor-pointer items-center gap-x-3 text-left focus:outline-none ${showPopover ? 'nc-hero-field-focused' : ''
+					}`}
 			>
 				<div className="text-neutral-300 dark:text-neutral-400">
 					<MapPinIcon className="h-5 w-5 lg:h-7 lg:w-7" />

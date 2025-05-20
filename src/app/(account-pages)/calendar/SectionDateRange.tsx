@@ -1,19 +1,20 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import DatePicker from 'react-datepicker'
 import DatePickerCustomHeaderTwoMonth from '@/components/DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from '@/components/DatePickerCustomDay'
 
 // Sample data for tooltips - replace with your actual data
 const bookingData = {
-  '2023-02-07': { checkedIn: 5, reservations: 8, cancelled: 0 },
-  '2023-02-08': { checkedIn: 3, reservations: 4, cancelled: 1 },
-  '2023-02-10': { checkedIn: 7, reservations: 12, cancelled: 2 },
-  '2023-02-14': { checkedIn: 10, reservations: 15, cancelled: 0 },
-  '2023-02-15': { checkedIn: 8, reservations: 9, cancelled: 1 },
-  '2023-02-18': { checkedIn: 6, reservations: 7, cancelled: 0 },
-  '2023-02-21': { checkedIn: 4, reservations: 5, cancelled: 3 },
+	'2023-02-07': { checkedIn: 5, reservations: 8, cancelled: 0 },
+	'2023-02-08': { checkedIn: 3, reservations: 4, cancelled: 1 },
+	'2023-02-10': { checkedIn: 7, reservations: 12, cancelled: 2 },
+	'2023-02-14': { checkedIn: 10, reservations: 15, cancelled: 0 },
+	'2023-02-15': { checkedIn: 8, reservations: 9, cancelled: 1 },
+	'2023-02-18': { checkedIn: 6, reservations: 7, cancelled: 0 },
+	'2023-02-21': { checkedIn: 4, reservations: 5, cancelled: 3 },
 }
 
 // Enhanced version of your existing DatePickerCustomDay that adds tooltips
@@ -30,23 +31,31 @@ interface EnhancedDatePickerCustomDayProps {
 	date: Date | any;
 }
 
+
+
 const EnhancedDatePickerCustomDay: React.FC<EnhancedDatePickerCustomDayProps> = (props) => {
 	const { dayOfMonth, date } = props
-	const [showTooltip, setShowTooltip] = useState<boolean>(false) 
-	
+	 const router = useRouter()
+	const [showTooltip, setShowTooltip] = useState<boolean>(false)
+
 	// Convert date to format used in bookingData
 	const formattedDate: string = date.toISOString().split('T')[0]
 	const dateData: BookingData | undefined = bookingData[formattedDate as keyof typeof bookingData]
-	
+
+	const handleClick = () => {
+		router.push(`/reservations`)
+	}
+
 	return (
-		<div 
+		<div
 			className="relative"
 			onMouseEnter={() => setShowTooltip(true)}
 			onMouseLeave={() => setShowTooltip(false)}
+			onClick={handleClick}
 		>
 			{/* Your original DatePickerCustomDay component */}
 			<DatePickerCustomDay dayOfMonth={dayOfMonth} date={date} />
-			
+
 			{/* Tooltip only shows if we have data and mouse is hovering */}
 			{showTooltip && dateData && (
 				<div className="absolute z-10 bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-white shadow-lg rounded-md p-2 text-xs w-48 pointer-events-none">

@@ -1,4 +1,6 @@
+'use client'
 import Logo from '@/shared/Logo'
+import { usePathname } from 'next/navigation';
 
 const navigation: {
 	solutions: { name: string; href: string }[]
@@ -102,6 +104,9 @@ const navigation: {
 }
 
 export default function Footer2() {
+	 const pathname = usePathname();
+	const hideLayout = pathname.startsWith('/qr')
+  if(hideLayout) {return null;}
 	return (
 		<footer className="border-t border-neutral-200 dark:border-neutral-700">
 			<div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">

@@ -41,6 +41,8 @@ import s2 from '@/images/custom-home/s2.png'
 import s3 from '@/images/custom-home/s3.png'
 import s4 from '@/images/custom-home/s4.png'
 import s5 from '@/images/custom-home/s5.jpg'
+import ReservationListPage from '@/app/account/reservation/page'
+import SectionGridAuthorBoxWebShops from '@/components/SectionGridAuthorBoxWebShops'
 const DEMO_CATS_2: TaxonomyType[] = [
 		{
 		id: '1',
@@ -90,7 +92,7 @@ function PageHome2() {
 			<div className="container relative mb-24 space-y-24 lg:mb-28 lg:space-y-28">
 				{/* <SectionHero2 className="" /> */}
 
-				<div className="ncSectionLogos grid grid-cols-3 gap-5 sm:gap-16 lg:grid-cols-5 mt-24">
+				{/* <div className="ncSectionLogos grid grid-cols-3 gap-5 sm:gap-16 lg:grid-cols-5 mt-24">
 					<div className="flex items-end justify-center">
 						<Image className="block dark:hidden" src={logo1} alt="logo1" />
 						<Image className="hidden dark:block" src={logo1Dark} alt="logo1" />
@@ -112,14 +114,15 @@ function PageHome2() {
 						<Image className="block dark:hidden" src={logo5} alt="logo5" />
 						<Image className="hidden dark:block" src={logo5Dark} alt="logo5" />
 					</div>
-				</div>
+				</div> */}
 
 				{/* <SectionHowItWork
 					data={[]}
 				/> */}
-				<SectionSliderNewCategoriesWebShopes
-					heading="How it work"
-					subHeading="Keep clam & travel on"
+				<div className="mt-10">
+					<SectionSliderNewCategoriesWebShopes
+					heading="2349 webshops"
+					subHeading="Kopen, sparen & GratisGenieten!"
 					categoryCardType="card5"
 					itemPerRow={5}
 				/>
@@ -127,6 +130,13 @@ function PageHome2() {
 					<BackgroundSection />
 					<SectionGridFeatureProperty />
 				</div> */}
+				</div>
+
+				<div className="relative py-16">
+					<BackgroundSection className="bg-neutral-100 dark:bg-black dark:bg-opacity-20" />
+					<SectionGridAuthorBoxWebShops boxCard="box2" />
+				</div>
+				
 
 				{/* <SectionOurFeatures type="type2" rightImg={rightImgPng} /> */}
 
@@ -144,10 +154,7 @@ function PageHome2() {
 					/>
 				</div>
 
-				<div className="relative py-16">
-					<BackgroundSection className="bg-neutral-100 dark:bg-black dark:bg-opacity-20" />
-					<SectionGridAuthorBox boxCard="box2" />
-				</div>
+				
 
 				{/*<SectionSliderNewCategories
 					heading="Explore by types of stays"

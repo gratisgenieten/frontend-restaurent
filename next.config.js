@@ -8,6 +8,8 @@ const nextConfig = {
 		typedRoutes: true,
 	},
 	images: {
+		    domains: ['randomuser.me'],
+
 		remotePatterns: [
 			{
 				protocol: 'https',

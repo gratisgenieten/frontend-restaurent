@@ -143,8 +143,8 @@ function PageHome() {
 						categories={DEMO_CATS_2}
 						categoryCardType="card4"
 						itemPerRow={4}
-						heading="Suggestions for discovery"
-						subHeading="Popular places to stay that Chisfis recommends for you"
+						heading="Sparen bij 2000+ webshops en direct GratisGenieten!"
+						subHeading="Shop met je unieke link en verdien direct cashback!"
 						sliderStyle="style2"
 					/>
 				</div>
