@@ -1,8 +1,7 @@
-// ChatMessage.tsx
 import React, { useState } from 'react';
 import { format } from 'date-fns';
-import { ChatMessageProps } from './types';
 import Image from 'next/image';
+import { ChatMessageProps } from './types';
 
 const ChatMessage: React.FC<ChatMessageProps> = ({
   id,
@@ -16,10 +15,9 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
   onOptionSelect
 }) => {
   const [showOptions, setShowOptions] = useState(false);
-
   const toggleOptions = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setShowOptions(!showOptions);
+    setShowOptions((prev) => !prev);
   };
 
   const handleOptionClick = (option: string) => {
@@ -28,11 +26,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
   };
 
   const renderFileMessage = () => (
-    <div className={`p-3 rounded-lg relative ${
-      isCurrentUser 
-        ? 'bg-blue-500 text-white' 
-        : 'bg-white border text-gray-800'
-    }`}>
+    <div
+      className={`p-3 rounded-lg relative ${
+        isCurrentUser
+          ? 'bg-blue-500 text-white'
+          : 'bg-white border text-gray-800'
+      }`}
+    >
       <div className="flex items-center">
         <div className="bg-blue-100 text-blue-500 p-2 rounded mr-2">
           {fileInfo?.extension === 'zip' ? (
@@ -58,71 +58,66 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
   );
 
   const renderTextMessage = () => (
-    <div className={`p-3 rounded-lg relative ${
-      isCurrentUser 
-        ? 'bg-blue-500 text-white' 
-        : 'bg-white border text-gray-800'
-    }`}>
+    <div
+      className={`p-3 rounded-lg relative ${
+        isCurrentUser
+          ? 'bg-blue-500 text-white'
+          : 'bg-white border text-gray-800'
+      }`}
+    >
       <p className="text-sm whitespace-pre-wrap">{content}</p>
     </div>
   );
 
   return (
-    <div className={`flex mb-4 ${isCurrentUser ? 'justify-end' : 'justify-start'}`}>
+    <div className={`flex mb-4   ${isCurrentUser ? 'justify-end' : 'justify-start'}`}>
       {!isCurrentUser && (
         <Image
-          src={senderAvatar} 
-          alt={senderName} 
+          src={senderAvatar}
+          alt={senderName}
+          width={32}
+          height={32}
           className="w-8 h-8 rounded-full object-cover mr-3 mt-1"
         />
       )}
-      
-      <div className="max-w-[70%] relative group">
+      <div className="max-w-[70%] relative group my-2">
         {type === 'text' ? renderTextMessage() : renderFileMessage()}
-        
         <div className="absolute -bottom-4 text-xs text-gray-500 whitespace-nowrap">
           {format(timestamp, 'h:mm a')}
         </div>
-        
-        <button 
+        <button
           onClick={toggleOptions}
           className={`absolute top-1 ${isCurrentUser ? 'left-0 -ml-6' : 'right-0 -mr-6'} 
             opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded-full hover:bg-gray-200`}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01" />
           </svg>
         </button>
-        
         {showOptions && (
           <div className={`absolute top-0 ${isCurrentUser ? 'left-0 -ml-32' : 'right-0 -mr-32'} 
-            bg-white shadow-md rounded-md py-1 z-10 w-28`}>
-            <button 
-              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={() => handleOptionClick('reply')}
-            >
-              Reply
-            </button>
-            <button 
-              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={() => handleOptionClick('forward')}
-            >
-              Forward
-            </button>
-            <button 
-              className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-              onClick={() => handleOptionClick('delete')}
-            >
-              Delete
-            </button>
+            bg-white shadow-md rounded-md py-1 z-10 w-28`}
+          >
+            {['reply', 'forward', 'delete'].map((opt) => (
+              <button
+                key={opt}
+                className={`block w-full text-left px-4 py-2 text-sm ${
+                  opt === 'delete' ? 'text-red-600' : 'text-gray-700'
+                } hover:bg-gray-100`}
+                onClick={() => handleOptionClick(opt)}
+              >
+                {opt.charAt(0).toUpperCase() + opt.slice(1)}
+              </button>
+            ))}
           </div>
         )}
       </div>
-      
       {isCurrentUser && (
         <Image
-          src={senderAvatar} 
-          alt={senderName} 
+          src={senderAvatar}
+          alt={senderName}
+          width={32}
+          height={32}
           className="w-8 h-8 rounded-full object-cover ml-3 mt-1"
         />
       )}

@@ -253,7 +253,8 @@ const SiteHeader = () => {
 				return <Header3 className={headerClassName} />
 		}
 	}
-		const hideLayout = pathname.startsWith('/qr')
+		const hideLayout = pathname.startsWith('/qr') 
+		// || pathname.startsWith('/chat') 
 		if (hideLayout) {
 			return null
 		}

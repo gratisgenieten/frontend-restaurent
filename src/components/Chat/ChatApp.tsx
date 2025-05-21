@@ -1,9 +1,8 @@
-// ChatApp.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import ChatHeader from '@/components/Chat/ChatHeader';
 import ChatMessage from '@/components/Chat/ChatMessage';
 import ChatInput from '@/components/Chat/ChatInput';
-import { User, Message, ChatThread, FileInfo, DisplayMessage } from '@/components/Chat/types';
+import { User, ChatThread, FileInfo, DisplayMessage } from '@/components/Chat/types';
 import { formatMessageDate, formatFileSize, prepareMessagesForDisplay } from './chatUtils';
 
 interface ChatAppProps {
@@ -20,40 +19,34 @@ const ChatApp: React.FC<ChatAppProps> = ({
   isMobile = false,
 }) => {
   const [displayMessages, setDisplayMessages] = useState<DisplayMessage[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null); // NEW
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Format messages for display, adding showDate property
   useEffect(() => {
     const formattedMessages = prepareMessagesForDisplay(
       chat.messages,
       currentUser,
       chat.user
     );
-
     setDisplayMessages(formattedMessages);
   }, [chat, currentUser]);
 
-  // Scroll to bottom on new messages
   useEffect(() => {
-    scrollToBottom();
-  }, [displayMessages]);
+  if (containerRef.current) {
+    containerRef.current.scrollTo({
+      top: containerRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
+  }
+}, [displayMessages]);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const handleSendFile = (file: File) => {
-    // In a real app, you would upload the file to a server here
     const fileExtension = file.name.split(".").pop() || "";
-
     const fileInfo: FileInfo = {
       name: file.name,
       size: formatFileSize(file.size),
       extension: fileExtension,
     };
-
-    // Creating a new message object that would be handled by the parent component in a real app
     console.log("Sending file:", {
       senderId: currentUser.id,
       content: file.name,
@@ -66,15 +59,12 @@ const ChatApp: React.FC<ChatAppProps> = ({
   const handleMessageOptions = (option: string, messageId: string) => {
     switch (option) {
       case "delete":
-        // This would be handled by the parent component in a real app
         console.log("Delete message:", messageId);
         break;
       case "reply":
-        // Implement reply functionality
         console.log("Reply to message:", messageId);
         break;
       case "forward":
-        // Implement forward functionality
         console.log("Forward message:", messageId);
         break;
       default:
@@ -83,8 +73,7 @@ const ChatApp: React.FC<ChatAppProps> = ({
   };
 
   return (
-    <div className="flex flex-col px-8 overflow-hidden">
-      {/* Fixed Header */}
+    <div className="flex w-full flex-col px-0 overflow-hidden bg-white dark:bg-neutral-900 transition-colors duration-300">
       <div className="flex-shrink-0">
         <ChatHeader
           avatar={chat.user.avatar.toString()}
@@ -95,19 +84,19 @@ const ChatApp: React.FC<ChatAppProps> = ({
           onOptionsClick={() => console.log("Options clicked")}
         />
       </div>
-
-      {/* Scrollable Messages Section */}
-      <div className="flex-1 overflow-y-auto p-2 md:p-4 bg-gray-50">
-        {displayMessages.map((msg, index) => (
-          <React.Fragment key={msg.id}>
+      <div
+        ref={containerRef}
+        className="flex-1 overflow-y-auto p-2 md:p-4 bg-gray-50 dark:bg-neutral-800  max-h-[420px] md:max-h-full min-h-[420px]  md:min-h-[calc(100vh-230px)] transition-colors duration-300"
+      >
+        {displayMessages.map((msg) => (
+          <div key={msg.id}>
             {msg.showDate && (
               <div className="flex justify-center my-3 md:my-4">
-                <span className="text-xs bg-gray-200 rounded-full px-3 py-1 text-gray-500">
+                <span className="text-xs bg-gray-200 dark:bg-neutral-700 rounded-full px-3 py-1 text-gray-500 dark:text-gray-300">
                   {formatMessageDate(msg.timestamp)}
                 </span>
               </div>
             )}
-
             <ChatMessage
               id={msg.id}
               content={msg.content}
@@ -120,12 +109,11 @@ const ChatApp: React.FC<ChatAppProps> = ({
               onOptionSelect={handleMessageOptions}
               isMobile={isMobile}
             />
-          </React.Fragment>
+          </div>
         ))}
-        <div ref={messagesEndRef} />
       </div>
 
-      {/* Fixed Input at Bottom */}
+      {/* Input */}
       <div className="flex-shrink-0">
         <ChatInput
           onSendMessage={onSendMessage}

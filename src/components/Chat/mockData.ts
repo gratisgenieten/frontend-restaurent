@@ -1,6 +1,6 @@
 // mockData.ts
 import { User, ChatThread } from '@/components/Chat/types';
-
+import avatars from '@/images/avatars/Image-21.png';
 // Current user data
 export const currentUser: User = {
   id: 'user1',
@@ -11,6 +11,7 @@ export const currentUser: User = {
 
 // Sample chat threads data that matches the image
 export const chatThreads: ChatThread[] = [
+  
   {
     id: 'chat1',
     user: {
@@ -151,5 +152,6 @@ export const chatThreads: ChatThread[] = [
         type: 'text',
       }
     ]
-  }
+  },
+  
 ];
