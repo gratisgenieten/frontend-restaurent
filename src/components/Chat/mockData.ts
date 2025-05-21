@@ -1,11 +1,10 @@
 // mockData.ts
 import { User, ChatThread } from '@/components/Chat/types';
-import avatars from '@/images/avatars/Image-21.png';
 // Current user data
 export const currentUser: User = {
   id: 'user1',
   name: 'Henry Jabbawockiez',
-  avatar: '/images/avatars/image-21.png',
+  avatar: 'https://randomuser.me/api/portraits/women/10.jpg',
   status: 'online'
 };
 
@@ -17,7 +16,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user2',
       name: 'Nika Jerrardo',
-      avatar: '/images/avatars/image-21.png',
+      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
       lastOnline: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
       status: 'online'
     },
@@ -81,7 +80,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user3',
       name: 'Luy Robin',
-      avatar: '/images/avatars/image-22.png',
+      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
       status: 'online'
     },
     messages: [
@@ -101,7 +100,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user4',
       name: 'Jared Sunn',
-      avatar: '/images/avatars/image-25.png',
+      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
       status: 'online'
     },
     messages: [
@@ -121,7 +120,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user5',
       name: 'David Amrosa',
-      avatar: '/images/avatars/image-24.png',
+      avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
       status: 'do-not-disturb'
     },
     messages: [
@@ -139,7 +138,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user6',
       name: 'Richard Marx',
-      avatar: '/images/avatars/image-23.png',
+      avatar: 'https://randomuser.me/api/portraits/men/9.jpg',
       lastOnline: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000), // 9 days ago
       status: 'offline'
     },
