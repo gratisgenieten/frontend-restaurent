@@ -5,7 +5,7 @@ import { Route } from 'next';
 export interface User {
   id: string;
   name: string;
-  avatar: string | StaticImageData;
+  avatar: string | any;
   lastOnline?: Date;
   status?: 'online' | 'offline' | 'away' | 'do-not-disturb';
 }

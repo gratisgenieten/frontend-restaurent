@@ -1,11 +1,11 @@
 // mockData.ts
 import { User, ChatThread } from '@/components/Chat/types';
-import avatar from '@/images/avatars/Image-10.png';
+// import avatar from '@/images/avatars';
 // Current user data
 export const currentUser: User = {
   id: 'user1',
   name: 'Henry Jabbawockiez',
-  avatar: avatar,
+  avatar: 'https://randomuser.me/api/portraits/women/10.jpg',
   status: 'online'
 };
 
@@ -17,7 +17,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user2',
       name: 'Nika Jerrardo',
-      avatar: avatar,
+      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
       lastOnline: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
       status: 'online'
     },
@@ -81,7 +81,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user3',
       name: 'Luy Robin',
-      avatar: avatar,
+      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
       status: 'online'
     },
     messages: [
@@ -101,7 +101,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user4',
       name: 'Jared Sunn',
-      avatar: avatar,
+      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
       status: 'online'
     },
     messages: [
@@ -121,7 +121,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user5',
       name: 'David Amrosa',
-      avatar: avatar,
+      avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
       status: 'do-not-disturb'
     },
     messages: [
@@ -139,7 +139,7 @@ export const chatThreads: ChatThread[] = [
     user: {
       id: 'user6',
       name: 'Richard Marx',
-      avatar: avatar,
+      avatar: 'https://randomuser.me/api/portraits/men/9.jpg',
       lastOnline: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000), // 9 days ago
       status: 'offline'
     },

@@ -29,13 +29,12 @@ const loginSocials = [
   },
 ];
 
-// Resort and food images for slider - same as login page for consistency
 const sliderImages = [
-  "https://images.unsplash.com/photo-1571896349842-33c89424de2d", // Luxury resort with infinity pool
-  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe", // Gourmet food platter
-  "https://images.unsplash.com/photo-1544148103-0773bf10d330", // Breakfast by the pool
-  "https://images.unsplash.com/photo-1566073771259-6a8506099945", // Beachfront resort
-  "https://images.unsplash.com/photo-1565299585323-38d6b0865b47", // Beachside dinner
+  "https://images.unsplash.com/photo-1571896349842-33c89424de2d", 
+  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe", 
+  "https://images.unsplash.com/photo-1544148103-0773bf10d330",
+  "https://images.unsplash.com/photo-1566073771259-6a8506099945", 
+  "https://images.unsplash.com/photo-1565299585323-38d6b0865b47", 
 ];
 
 const ImageSlider = () => {
@@ -96,17 +95,11 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
     <div className={`nc-PageSignUp min-h-screen w-full`}>
       <div className="container relative flex min-h-screen items-center justify-center px-4 py-16">
         <div className="flex w-full max-w-5xl flex-col md:flex-row rounded-lg overflow-hidden shadow-2xl">
-          {/* Left side with image slider */}
           <div className="relative w-full md:w-1/2 bg-blue-500 overflow-hidden">
             <ImageSlider />
-
-            {/* Content overlay */}
             <div className="absolute inset-0 flex flex-col justify-between p-10 text-white">
-              {/* Leaving this empty as in the login page */}
             </div>
           </div>
-
-          {/* Right side with signup form */}
           <div className="w-full md:w-1/2 bg-white p-8 md:p-10 overflow-auto max-h-screen">
             <div className="max-w-md mx-auto">
               <div className="mb-8 space-y-2">
