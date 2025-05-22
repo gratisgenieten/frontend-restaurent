@@ -89,10 +89,13 @@ const PageLogin: FC = () => {
       } else {
         setError("email", { message });
       } 
+      
     } finally {
       setLoading(false);
     }
   };
+
+
 
   return (
     <div className="nc-PageLogin min-h-screen w-full bg-white dark:bg-neutral-900 transition-colors">
