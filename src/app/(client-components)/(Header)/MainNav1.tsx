@@ -6,6 +6,7 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import MenuBar from '@/shared/MenuBar'
 import SwitchDarkMode from '@/shared/SwitchDarkMode'
 import HeroSearchForm2MobileFactory from '../(HeroSearchForm2Mobile)/HeroSearchForm2MobileFactory'
+import Cookies from "js-cookie";
 import T from '@/utils/getT'
 export interface MainNav1Props {
 	className?: string
@@ -15,6 +16,11 @@ export type ThemeDir = 'ltr' | 'rtl'
 
 const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
 
+	const [token ,setToken] = useState(false);
+	// useEffect(()=>{
+	// 	const token = Cookies.get("token");
+	// 	setToken(token);
+	// },[]);
 		
 	return (
 		<div className={`nc-MainNav1 relative z-10 ${className}`}>
@@ -35,9 +41,16 @@ const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
 						<SwitchDarkMode />
 						<SearchDropdown className="flex items-center" />
 						<div className="px-1" />
-						<ButtonPrimary className="self-center" href="/login">
+						{token ?
+							<ButtonPrimary className="self-center" href="/login">
 							{T['Header']['Sign up']}
 						</ButtonPrimary>
+						: 
+							<ButtonPrimary className="self-center" href="/login">
+								{T['Header']['Dashboard']}
+							</ButtonPrimary>
+						}
+						
 					</div>
 
 					<div className="flex items-center xl:hidden">
