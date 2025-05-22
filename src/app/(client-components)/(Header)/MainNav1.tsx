@@ -1,4 +1,4 @@
-import React, { FC,Fragment, useEffect, useRef, useState } from 'react'
+import React, { FC, Fragment, useEffect, useRef, useState } from 'react'
 import Logo from '@/shared/Logo'
 import Navigation from '@/shared/Navigation/Navigation'
 import SearchDropdown from './SearchDropdown'
@@ -8,6 +8,7 @@ import SwitchDarkMode from '@/shared/SwitchDarkMode'
 import HeroSearchForm2MobileFactory from '../(HeroSearchForm2Mobile)/HeroSearchForm2MobileFactory'
 import Cookies from "js-cookie";
 import T from '@/utils/getT'
+import { usePathname } from 'next/navigation'
 export interface MainNav1Props {
 	className?: string
 }
@@ -15,13 +16,15 @@ export type SiteHeaders = 'Header 1' | 'Header 2' | 'Header 3'
 export type ThemeDir = 'ltr' | 'rtl'
 
 const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
+	const [token, setToken] = useState<string | undefined>(undefined);
+	const pathname = usePathname()
 
-	const [token ,setToken] = useState(false);
-	// useEffect(()=>{
-	// 	const token = Cookies.get("token");
-	// 	setToken(token);
-	// },[]);
-		
+
+	useEffect(() => {
+		const cookieToken = Cookies.get("token");
+		setToken(cookieToken);
+	}, []);
+
 	return (
 		<div className={`nc-MainNav1 relative z-10 ${className}`}>
 			<div className="relative flex h-20 justify-between px-4 lg:container">
@@ -41,16 +44,25 @@ const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
 						<SwitchDarkMode />
 						<SearchDropdown className="flex items-center" />
 						<div className="px-1" />
-						{token ?
-							<ButtonPrimary className="self-center" href="/login">
-							{T['Header']['Sign up']}
-						</ButtonPrimary>
-						: 
-							<ButtonPrimary className="self-center" href="/login">
-								{T['Header']['Dashboard']}
+						{!token ?
+							<ButtonPrimary className="self-center" href="/login" >
+								{T['Header']['Sign in']}
 							</ButtonPrimary>
+							:
+							<div className='flex items-center justify-center gap-2'>
+								<ButtonPrimary className="self-center" href="/account">
+									{T['Header']['Dashboard']}
+								</ButtonPrimary>
+								{pathname.startsWith('/account') ? 
+								
+									<a className="bg-[#4338CA] text-white px-6 py-2 rounded-full self-center ml-2" href="/" onClick={()=>{Cookies.remove('token')}}>
+										{T['Header']['Back to Front']}
+									</a>
+								: null } 
+								
+							</div>
 						}
-						
+
 					</div>
 
 					<div className="flex items-center xl:hidden">
@@ -58,7 +70,7 @@ const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
 						<div className="px-0.5" />
 						<MenuBar />
 					</div>
-					
+
 				</div>
 			</div>
 		</div>

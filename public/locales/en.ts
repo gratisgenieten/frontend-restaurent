@@ -34,7 +34,10 @@ export const en = {
 	Header: {
 		'List your property': 'List your property',
 		'Sign up': 'Sign up',
+		'Sign in': 'Sign in',
 		'Dashboard': 'Dashboard',
+		'Back to Front': 'Back to Front',
+		'Sign up / login':'Sign up / login',
 		AvatarDropDown: {
 			'My Account': 'My Account',
 			'My bookings': 'My bookings',

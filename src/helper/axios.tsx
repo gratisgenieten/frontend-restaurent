@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 
 const baseURL: string =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.gratisgenieten.nl/api/";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.gratisgenieten.nl/api/vi/";
 
 const service = axios.create({
   baseURL,
