@@ -126,7 +126,7 @@ const PageLogin: FC<PageLoginProps> = ({}) => {
                 </h2>
               </div>
 
-              <h3 className="mb-6 text-md sm:text-xl font-medium">
+              <h3 className="mb-6 text-md sm:text-xl font-medium dark:text-gray-600">
                 <span className="text-blue-500">Login</span> Your Account
               </h3>
 
@@ -135,7 +135,7 @@ const PageLogin: FC<PageLoginProps> = ({}) => {
                   {/* <label className="block text-gray-500">Email Address</label> */}
                   <input
                     type="email"
-                    className="w-full border-0 border-b-2 border-blue-500 focus:border-blue-500 focus:ring-0 pb-2 outline-none"
+                    className="w-full border-0 border-b-2 border-blue-500 focus:border-blue-500 focus:ring-0 pb-2 outline-none dark:text-gray-600"
                     placeholder="Email Address"
                   />
                 </div>
@@ -144,7 +144,7 @@ const PageLogin: FC<PageLoginProps> = ({}) => {
                   {/* <label className="block text-gray-500">Password</label> */}
                   <input
                     type="password"
-                    className="w-full border-0 border-b-2 border-blue-500 focus:border-blue-500 focus:ring-0 pb-2 outline-none"
+                    className="w-full border-0 border-b-2 border-blue-500 focus:border-blue-500 focus:ring-0 pb-2 outline-none dark:text-black"
                     placeholder="Password"
                   />
                 </div>
