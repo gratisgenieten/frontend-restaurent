@@ -221,7 +221,6 @@ const PageSignUp: FC = () => {
                     </Link>
                   </div>
                 </form>
-              
             </div>
           </div>
         </div>

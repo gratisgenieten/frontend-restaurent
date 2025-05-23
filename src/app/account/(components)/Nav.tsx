@@ -26,7 +26,7 @@ export const Nav = () => {
 		.replaceAll('-', ' ')
 		.replace(/\//g, ' ')
 		.trim()
-		.replace(/\b\w/g, (char) => char.toUpperCase()); 
+		.replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize
 	};
 
 	return (
@@ -44,6 +44,7 @@ export const Nav = () => {
 									: 'border-transparent'
 							}`}
 						>	
+							{/* {item.replace('-', ' ') == '/account/wallet' ? 'wallet' : item.replaceAll('-', ' ').replace('/', ' ')} */}
 							{formatLabel(item)}
 						</Link>
 					)

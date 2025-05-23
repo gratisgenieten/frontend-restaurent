@@ -6,7 +6,7 @@ import NcModal from '@/shared/NcModal';
 import StatusCard from '@/components/StatusCard';
 import PartnerModal, { PartnerData } from './model/PartnerModal';
 
-const initialPartners: PartnerData[] = [
+const initialPartners: any[] = [
     {
         partner_id: 1,
         user_id: 101,
@@ -71,13 +71,13 @@ const initialPartners: PartnerData[] = [
 
 const PartnersPage = () => {
     const [partners, setPartners] = useState<PartnerData[]>(initialPartners);
-    const [editingPartner, setEditingPartner] = useState<PartnerData | null>(null);
+    const [editingPartner, setEditingPartner] = useState<any | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleSavePartner = (updatedPartner: PartnerData) => {
+    const handleSavePartner = (updatedPartner: any) => {
         if (updatedPartner.partner_id) {
             setPartners((prev) =>
-                prev.map((p) =>
+                prev.map((p:any) =>
                     p.partner_id === updatedPartner.partner_id ? { ...p, ...updatedPartner } : p
                 )
             );
@@ -109,7 +109,7 @@ const PartnersPage = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-                {partners.map((partner) => (
+                {partners.map((partner:any) => (
                     <NcModal
                         key={partner.partner_id}
                         modalTitle={`Edit Partner: ${partner.name}`}

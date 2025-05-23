@@ -15,7 +15,7 @@ export interface LoginResponse {
 export interface SignupPayload {
   name: string;
   email: string;
-  phone_no: string;
+  phone: any;
   password: string;
   passwordConfirm: string;
   age: number;
@@ -32,7 +32,7 @@ export interface SignupResponse {
     id: number;
     name: string;
     email: string;
-    phone_no: string;
+    phone: any;
   };
   token?: string;
 }
@@ -51,8 +51,16 @@ export interface SignupAdminResponse {
     id: number;
     name: string;
     email: string;
-    phone: string;
+    phone: any;
     kvk_number: string;
   };
   token?: string;
+}
+
+export interface SignUpData {
+  name: string;
+  email: string;
+  phone: any;
+  password: string;
+  kvk_number: string;
 }

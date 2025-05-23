@@ -191,14 +191,20 @@ export const NAVIGATION_DEMO: NavItemType[] =
 			id: ncNanoId(),
 			href: '/blog',
 			name: 'Blog',
-			type: 'dropdown',
-			children: [
-				{ id: ncNanoId(), href: '/reviews', name: 'Reviews' },
-				{ id: ncNanoId(), href: '/clients', name: 'Clients' },
-			]
+			// type: 'dropdown',
+			// children: [
+			// 	{ id: ncNanoId(), href: '/reviews', name: 'Reviews' },
+				// { id: ncNanoId(), href: '/clients', name: 'Clients' },
+			// ]
 			// type: 'dropdown',
 			// children: demoChildMenus,
 			// isNew: true,
+		},
+		{
+			id: ncNanoId(),
+			href: '/reviews',
+			name: 'Reviews',
+		
 		},
 		{
 			id: ncNanoId(),
@@ -208,22 +214,22 @@ export const NAVIGATION_DEMO: NavItemType[] =
 			// children: demoChildMenus,
 			// isNew: true,
 		},
-		{
-			id: ncNanoId(),
-			href: '/account/reservations',
-			name: 'Reservations',
-			// type: 'dropdown',
-			// children: demoChildMenus,
-			// isNew: true,
-		},
-		{
-			id: ncNanoId(),
-			href: '/account',
-			name: 'Account',
-			// type: 'dropdown',
-			// children: demoChildMenus,
-			// isNew: true,
-		},
+		// {
+		// 	id: ncNanoId(),
+		// 	href: '/account/reservations',
+		// 	name: 'Reservations',
+		// 	// type: 'dropdown',
+		// 	// children: demoChildMenus,
+		// 	// isNew: true,
+		// },
+		// {
+		// 	id: ncNanoId(),
+		// 	href: '/account',
+		// 	name: 'Account',
+		// 	// type: 'dropdown',
+		// 	// children: demoChildMenus,
+		// 	// isNew: true,
+		// },
 		{
 			id: ncNanoId(),
 			href: '/deals',
@@ -232,27 +238,27 @@ export const NAVIGATION_DEMO: NavItemType[] =
 			// children: demoChildMenus,
 			// isNew: true,
 		},
-		{
-			id: ncNanoId(),
-			href: '#',
-			name: 'Forms',
-			type: 'dropdown',
-			children: [
-				{ id: ncNanoId(), href: '/admin-v1/affiliate-click', name: 'Affiliate Clicks' },
-				{ id: ncNanoId(), href: '/admin-v1/categories', name: 'Categories' },
-				{ id: ncNanoId(), href: '/deals-form', name: 'Deals Form' },
-				{ id: ncNanoId(), href: '/admin-v1/options', name: 'Options' },
-				{ id: ncNanoId(), href: '/admin-v1/partners', name: 'Partners' },
-				{ id: ncNanoId(), href: '/admin-v1/permission', name: 'Permissions' },
-				{ id: ncNanoId(), href: '/admin-v1/referrals', name: 'Referrals' },
-				// { id: ncNanoId(), href: '/account/reservation', name: 'Reservations' },
-				{ id: ncNanoId(), href: '/admin-v1/role', name: 'Roles' },
-				// { id: ncNanoId(), href: '/admin-v1/status-history', name: 'Status History' },
-				{ id: ncNanoId(), href: '/admin-v1/transactions', name: 'Transactions' },
-				{ id: ncNanoId(), href: '/account/status', name: 'Universal Status' },
-				{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
-			]
-		},
+		// {
+		// 	id: ncNanoId(),
+		// 	href: '#',
+		// 	name: 'Forms',
+		// 	type: 'dropdown',
+		// 	children: [
+		// 		{ id: ncNanoId(), href: '/admin-v1/affiliate-click', name: 'Affiliate Clicks' },
+		// 		{ id: ncNanoId(), href: '/admin-v1/categories', name: 'Categories' },
+		// 		{ id: ncNanoId(), href: '/deals-form', name: 'Deals Form' },
+		// 		{ id: ncNanoId(), href: '/admin-v1/options', name: 'Options' },
+		// 		{ id: ncNanoId(), href: '/admin-v1/partners', name: 'Partners' },
+		// 		// { id: ncNanoId(), href: '/admin-v1/permission', name: 'Permissions' },
+		// 		{ id: ncNanoId(), href: '/admin-v1/referrals', name: 'Referrals' },
+		// 		// { id: ncNanoId(), href: '/account/reservation', name: 'Reservations' },
+		// 		// { id: ncNanoId(), href: '/admin-v1/role', name: 'Roles' },
+		// 		// { id: ncNanoId(), href: '/admin-v1/status-history', name: 'Status History' },
+		// 		{ id: ncNanoId(), href: '/admin-v1/transactions', name: 'Transactions' },
+		// 		{ id: ncNanoId(), href: '/account/status', name: 'Universal Status' },
+		// 		{ id: ncNanoId(), href: '/admin-v1/user', name: 'Users' },
+		// 	]
+		// },
 		{
 			id: ncNanoId(),
 			href: '/qr',
@@ -265,6 +271,11 @@ export const NAVIGATION_DEMO: NavItemType[] =
 
 
 export const NAVIGATION_ADMIN: any = [
+	{
+		id: ncNanoId(),
+		href: '/account',
+		name: 'Account',
+	},
 	{
 		id: ncNanoId(),
 		href: '/account/deals',

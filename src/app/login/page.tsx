@@ -1,4 +1,3 @@
-// Updated Login Page with Zod validation and custom API error handling
 "use client";
 
 import React, { FC, useState, useEffect } from "react";
@@ -9,11 +8,12 @@ import facebookSvg from "@/images/Facebook.svg";
 import twitterSvg from "@/images/Twitter.svg";
 import googleSvg from "@/images/Google.svg";
 import { loginAdmin } from "@/hooks/apis/useAuth";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { showSuccessToast, showErrorToast } from '@/lib/toast';
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email"),
@@ -63,6 +63,9 @@ const ImageSlider = () => {
 
 const PageLogin: FC = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  // const pathname = usePathname();
+  const referralId = searchParams.get("ref");
   const [loading, setLoading] = useState(false);
 
   const {
@@ -77,25 +80,25 @@ const PageLogin: FC = () => {
   const onSubmit = async (data: LoginFormData) => {
     setLoading(true);
     try {
-      const res = await loginAdmin(data);
+      const payload = referralId ? { ...data, referralId } : data;
+      const res = await loginAdmin(payload);
       Cookies.set("token", res.token, { expires: 365 });
+      showSuccessToast("🎉 Login successful!");
       router.push("/account/deals");
     } catch (error: any) {
-      const message = error?.response?.data?.message || "email was not found";
+      const message = error?.response?.data?.message || "Email or password is incorrect";
+      showErrorToast(message);
       if (message.toLowerCase().includes("email")) {
         setError("email", { message });
       } else if (message.toLowerCase().includes("password")) {
         setError("password", { message });
       } else {
         setError("email", { message });
-      } 
-      
+      }
     } finally {
       setLoading(false);
     }
   };
-
-
 
   return (
     <div className="nc-PageLogin min-h-screen w-full bg-white dark:bg-neutral-900 transition-colors">
@@ -107,6 +110,23 @@ const PageLogin: FC = () => {
           </div>
           <div className="w-full md:w-1/2 bg-white dark:bg-neutral-800 p-8 md:p-10">
             <div className="max-w-md mx-auto">
+              <div className="flex justify-center gap-4 mb-6">
+                {/* {tabs.map((tab) => (
+                  <button
+                    key={tab.href}
+                    onClick={() => router.push(tab.href)}
+                    type="button"
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                      pathname === tab.href
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))} */}
+              </div>
+
               <div className="mb-6 space-y-2">
                 <p className="text-sm text-neutral-500 dark:text-neutral-400">Hello 👋</p>
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Good Morning</h2>
@@ -114,7 +134,7 @@ const PageLogin: FC = () => {
               <h3 className="mb-6 text-lg font-medium text-neutral-900 dark:text-neutral-100">
                 <span className="text-blue-600 dark:text-blue-400">Login</span> Your Account
               </h3>
-
+              
               <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <input
@@ -153,7 +173,17 @@ const PageLogin: FC = () => {
                 </div>
 
                 <ButtonPrimary className="w-full mt-4" disabled={loading} type="submit">
-                  {loading ? "Logging in..." : "SUBMIT"}
+                  {loading ? (
+                    <div className="flex justify-center items-center gap-2">
+                      <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Logging in...
+                    </div>
+                  ) : (
+                    'SUBMIT'
+                  )}
                 </ButtonPrimary>
 
                 <div className="pt-6 text-center text-sm text-neutral-500 dark:text-neutral-400">

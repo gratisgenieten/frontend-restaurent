@@ -1,3 +1,4 @@
+
 import { Poppins } from 'next/font/google'
 import SiteHeader from './(client-components)/(Header)/SiteHeader'
 import ClientCommons from './ClientCommons'
@@ -12,6 +13,8 @@ import Footer2 from '@/components/Footer2'
 import Footer3 from '@/components/Footer3'
 import Footer4 from '@/components/Footer4'
 import { usePathname } from 'next/navigation'
+import ToastProvider from '@/components/Toast/ToastProvider'
+// import RouteChangeIndicator from '@/components/loading'
 
 
 const poppins = Poppins({
@@ -41,11 +44,13 @@ export default function RootLayout({
 		<html lang="en" className={poppins.className}>
 			<ThemeProvider>
 				<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+					 <ToastProvider />
 					<div>
 						<div className='sticky top-0 z-50'>
 							<SiteHeader />
 						</div>
 						{children}
+						 {/* <RouteChangeIndicator /> */}
 						<FooterNav />
 						<Footer2 />
 					</div>

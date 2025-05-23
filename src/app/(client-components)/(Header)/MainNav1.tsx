@@ -7,8 +7,9 @@ import MenuBar from '@/shared/MenuBar'
 import SwitchDarkMode from '@/shared/SwitchDarkMode'
 import HeroSearchForm2MobileFactory from '../(HeroSearchForm2Mobile)/HeroSearchForm2MobileFactory'
 import Cookies from "js-cookie";
+import { FaPowerOff } from "react-icons/fa6";
 import T from '@/utils/getT'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 export interface MainNav1Props {
 	className?: string
 }
@@ -18,12 +19,13 @@ export type ThemeDir = 'ltr' | 'rtl'
 const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
 	const [token, setToken] = useState<string | undefined>(undefined);
 	const pathname = usePathname()
-
-
+	const hideLayout = pathname.includes('/account') || pathname.includes('/wallet') || pathname.includes('/tell-a-friend') || pathname.includes('/calendar')
 	useEffect(() => {
 		const cookieToken = Cookies.get("token");
 		setToken(cookieToken);
-	}, []);
+	}, [pathname]);
+
+	const route = useRouter();
 
 	return (
 		<div className={`nc-MainNav1 relative z-10 ${className}`}>
@@ -50,18 +52,38 @@ const MainNav1: FC<MainNav1Props> = ({ className = '' }) => {
 							</ButtonPrimary>
 							:
 							<div className='flex items-center justify-center gap-2'>
-								<ButtonPrimary className="self-center" href="/account">
-									{T['Header']['Dashboard']}
-								</ButtonPrimary>
-								{pathname.startsWith('/account') ? 
-								
-									<a className="bg-[#4338CA] text-white px-6 py-2 rounded-full self-center ml-2" href="/" onClick={()=>{Cookies.remove('token')}}>
+
+
+								{!hideLayout ?
+									<ButtonPrimary className="self-center" href="/account">
+										{T['Header']['Dashboard']}
+									</ButtonPrimary>
+
+									: null}
+
+								{pathname.startsWith('/account') ?
+
+									<a className="bg-[#4338CA] text-white px-6 py-2 rounded-full self-center ml-2" href="/"
+
+									>
 										{T['Header']['Back to Front']}
 									</a>
-								: null } 
-								
+									: null}
+
+								{token ? (
+									<button
+										onClick={() =>{Cookies.remove('token'), route.push('/')}}
+										className="p-2 rounded-full bg-red-600 text-white hover:bg-red-700 transition"
+									>
+										<FaPowerOff size={18} />
+									</button>
+								) : null}
+
+
+
 							</div>
 						}
+
 
 					</div>
 
