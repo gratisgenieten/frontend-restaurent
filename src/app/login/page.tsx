@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ButtonPrimary from "@/shared/ButtonPrimary";
@@ -63,9 +63,10 @@ const ImageSlider = () => {
 
 const PageLogin: FC = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   // const pathname = usePathname();
-  const referralId = searchParams.get("ref");
+  // const referralId = searchParams.get("ref");
+  const referralId = null;
   const [loading, setLoading] = useState(false);
 
   const {

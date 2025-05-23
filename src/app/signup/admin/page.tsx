@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, Suspense } from 'react';
 // import facebookSvg from '@/images/Facebook.svg';
 // import twitterSvg from '@/images/Twitter.svg';
 // import googleSvg from '@/images/Google.svg';
@@ -83,10 +83,11 @@ const PageSignUp: FC = () => {
   const [apiError, setApiError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const ref = searchParams.get('ref') ?? '';
+  // const searchParams = useSearchParams();
+  // const ref = searchParams.get('ref') ?? '';
+  const ref = null;
   const [whichUserSignup, setWhichUserSignup] = useState<string>('');
-  const tabs:any = [
+  const tabs: any = [
     { label: "Client", href: "/signup" },
     { label: "Partner", href: "/signup/partner" },
     { label: "Admin", href: "/signup/admin" },
@@ -95,10 +96,10 @@ const PageSignUp: FC = () => {
   const onSubmit = async (data: SignupFormData) => {
     setLoading(true);
     setApiError(null);
-    
+
     try {
       const result = await signUpAdmin(data, whichUserSignup);
-      Cookies.set('token',result?.token,{expires:365});
+      Cookies.set('token', result?.token, { expires: 365 });
       router.push('/account/deals');
       showSuccessToast("🎉 Signup successful!");
     } catch (error: any) {
@@ -109,7 +110,7 @@ const PageSignUp: FC = () => {
           if (Array.isArray(messages)) {
             setError(field as keyof SignupFormData, {
               type: 'manual',
-              message: messages[0], 
+              message: messages[0],
             });
           }
         });
@@ -124,53 +125,53 @@ const PageSignUp: FC = () => {
     }
   };
 
- useEffect(() => {
-  const pathToUserTypeMap: Record<string, 'client' | 'partner' | 'admin'> = {
-    '/signup': 'client',
-    '/signup/partner': 'partner',
-    '/signup/admin': 'admin',
-  };
-  const userType = pathToUserTypeMap[pathname];
-  if (userType) {
-    setWhichUserSignup(userType);
-  }
-}, [pathname]);
+  useEffect(() => {
+    const pathToUserTypeMap: Record<string, 'client' | 'partner' | 'admin'> = {
+      '/signup': 'client',
+      '/signup/partner': 'partner',
+      '/signup/admin': 'admin',
+    };
+    const userType = pathToUserTypeMap[pathname];
+    if (userType) {
+      setWhichUserSignup(userType);
+    }
+  }, [pathname]);
 
 
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
-      <div className="container flex min-h-screen items-center justify-center px-4 py-16">
-        
-        <div className="flex w-full max-w-5xl flex-col overflow-hidden rounded-lg shadow-2xl md:flex-row">
-          <div className="relative w-full overflow-hidden bg-blue-500 md:w-1/2">
-            <ImageSlider />
-          </div>
-          <div className="w-full max-h-screen overflow-auto bg-white dark:bg-gray-800 p-8 md:w-1/2 md:p-10">
-            <div className="flex justify-center space-x-2 mb-6">
-              {tabs.map((tab:any) => {
-                const fullHref = ref ? `${tab.href}?ref=${ref}` : tab.href;
-                return (
-                  <Link
-                    key={tab.href}
-                    href={fullHref}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                      pathname === tab.href ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                    }`}
-                  >
-                    {tab.label}
-                  </Link>
-                );
-              })}
-            </div>
+   
+      <div className="min-h-screen w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+        <div className="container flex min-h-screen items-center justify-center px-4 py-16">
 
-            <div className="mx-auto max-w-md">
-              <div className="mb-8">
-                <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-lg">Welcome!</p>
+          <div className="flex w-full max-w-5xl flex-col overflow-hidden rounded-lg shadow-2xl md:flex-row">
+            <div className="relative w-full overflow-hidden bg-blue-500 md:w-1/2">
+              <ImageSlider />
+            </div>
+            <div className="w-full max-h-screen overflow-auto bg-white dark:bg-gray-800 p-8 md:w-1/2 md:p-10">
+              <div className="flex justify-center space-x-2 mb-6">
+                {tabs.map((tab: any) => {
+                  const fullHref = ref ? `${tab.href}?ref=${ref}` : tab.href;
+                  return (
+                    <Link
+                      key={tab.href}
+                      href={fullHref}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition ${pathname === tab.href ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                        }`}
+                    >
+                      {tab.label}
+                    </Link>
+                  );
+                })}
               </div>
-              <h3 className="text-md mb-6 font-medium sm:text-xl">
-                <span className="text-blue-500">Sign Up</span> For Free
-              </h3>
-              
+
+              <div className="mx-auto max-w-md">
+                <div className="mb-8">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-lg">Welcome!</p>
+                </div>
+                <h3 className="text-md mb-6 font-medium sm:text-xl">
+                  <span className="text-blue-500">Sign Up</span> For Free
+                </h3>
+
                 <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
                   {['name', 'email', 'phone', 'password', 'kvk_number'].map((field) => (
                     <div key={field} className="space-y-1">
@@ -221,12 +222,13 @@ const PageSignUp: FC = () => {
                     </Link>
                   </div>
                 </form>
-              
+
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 

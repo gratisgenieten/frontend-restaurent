@@ -14,7 +14,7 @@ import Footer3 from '@/components/Footer3'
 import Footer4 from '@/components/Footer4'
 import { usePathname } from 'next/navigation'
 import ToastProvider from '@/components/Toast/ToastProvider'
-// import RouteChangeIndicator from '@/components/loading'
+import RouteChangeIndicator from '@/components/loading'
 
 
 const poppins = Poppins({
@@ -50,7 +50,7 @@ export default function RootLayout({
 							<SiteHeader />
 						</div>
 						{children}
-						 {/* <RouteChangeIndicator /> */}
+						 <RouteChangeIndicator />
 						<FooterNav />
 						<Footer2 />
 					</div>
