@@ -6,8 +6,7 @@ const nextConfig = {
 	reactStrictMode: false,
 	experimental: {
 		typedRoutes: true,
-		workerThreads: false,
-
+		
 	},
 	images: {
 		    domains: ['randomuser.me'],
