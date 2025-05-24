@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import roundedCurve from "@/images/custom-home/rounded-curv.png"; // Use your updated purple PNG
+import roundedCurve from "@/images/custom-home/rounded-curv.png";
 import { FaTrash } from 'react-icons/fa';
 
 const tabs = [
@@ -39,7 +39,6 @@ export default function DealForm() {
 
   return (
     <div className="relative w-full min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
-      {/* Purple curve background */}
       <Image
         src={roundedCurve}
         alt="Rounded Curve"
@@ -145,7 +144,6 @@ export default function DealForm() {
 
             {activeTab === "images" && (
               <div className="rounded-md sm:rounded-xl">
-                {/* Upload Input */}
                 <div className="mb-8">
                   <label
                     htmlFor="image-upload"
@@ -153,7 +151,6 @@ export default function DealForm() {
                   >
                     Upload Images
                   </label>
-
                   <div className="relative border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
                     <svg
                       className="w-10 h-10 text-gray-400 dark:text-gray-500 mb-2"
@@ -180,14 +177,10 @@ export default function DealForm() {
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                     />
                   </div>
-
                   <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
                     Supported formats: JPG, PNG, WEBP · You can upload multiple images
                   </p>
                 </div>
-
-
-                {/* Image Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                   {photos.map((src, index) => (
                     <div
@@ -202,8 +195,6 @@ export default function DealForm() {
                           className="object-cover w-full h-full"
                         />
                       </div>
-
-                      {/* Delete Button */}
                       <button
                         onClick={() => handleDeleteImage(index)}
                         type="button"
@@ -211,8 +202,6 @@ export default function DealForm() {
                       >
                         <FaTrash className="w-4 h-4" />
                       </button>
-
-                      {/* Overlay on hover */}
                       <div
                         className="absolute inset-0 bg-black bg-opacity-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                       />

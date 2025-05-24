@@ -301,6 +301,11 @@ export const NAVIGATION_ADMIN: any = [
 		href: '/account/status',
 		name: 'Status',
 	},
+	{ 
+		id: ncNanoId(), 
+		href: '/account/options', 
+		name: 'Options' 
+	},
 ]
 
 export const NAVIGATION_DEMO_2: NavItemType[] = [
