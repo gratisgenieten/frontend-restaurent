@@ -1,69 +1,114 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StatusModal, { StatusData } from './model/StatusModal';
-import ButtonPrimary from '@/shared/ButtonPrimary';
+import {
+  createStatus,
+  updateStatusById,
+  deleteStatusById,
+  getStatusesByEntityType,
+} from '@/hooks/apis/useAdmin';
+import { showSuccessToast, showErrorToast } from '@/lib/toast';
 import classNames from 'classnames';
+import Swal from 'sweetalert2';
 
-const initialStatuses = [
-  {
-    status_id: 101,
-    entity_type: 'reservation',
-    code: 'pending',
-    label: 'Pending',
-    color_hex: '#facc15',
-    sort_order: 1,
-  },
-  {
-    status_id: 102,
-    entity_type: 'reservation',
-    code: 'confirmed',
-    label: 'Confirmed',
-    color_hex: '#22c55e',
-    sort_order: 2,
-  },
-  {
-    status_id: 103,
-    entity_type: 'reservation',
-    code: 'cancelled',
-    label: 'Cancelled',
-    color_hex: '#ef4444',
-    sort_order: 3,
-  },
-];
+const ENTITY_TYPES = ['reservation', 'deal', 'order', 'user', 'voucher', 'invoice'];
 
 const StatusPage = () => {
-  const [statuses, setStatuses] = useState(initialStatuses);
+  const [statuses, setStatuses] = useState<StatusData[]>([]);
   const [activeEntity, setActiveEntity] = useState('reservation');
   const [editingStatus, setEditingStatus] = useState<StatusData | null>(null);
-  const [formKey, setFormKey] = useState('new');
+  const [formKey, setFormKey] = useState<string>('new');
+  const [loading, setLoading] = useState(false);
+  const [apiErrors, setApiErrors] = useState<any | null>(null);
 
-  const handleSaveStatus = (updatedStatus: StatusData) => {
-    if (updatedStatus.status_id) {
-      setStatuses((prev) =>
-        prev.map((s) =>
-          s.status_id === updatedStatus.status_id ? { ...s, ...updatedStatus } : s
-        )
-      );
-    } else {
-      const newStatus = {
-        ...updatedStatus,
-        status_id: Math.floor(Math.random() * 100000),
-        entity_type: activeEntity,
-      };
-      setStatuses((prev) => [...prev, newStatus]);
+  const fetchStatuses = async () => {
+    try {
+      setLoading(true);
+      const response = await getStatusesByEntityType(activeEntity);
+      setStatuses(response);
+    } catch (err: any) {
+      showErrorToast(err.message || 'Failed to fetch statuses');
+    } finally {
+      setLoading(false);
     }
-    setEditingStatus(null);
-    setFormKey('new');
   };
 
-  const filteredStatuses = statuses.filter((s) => s.entity_type === activeEntity);
+  useEffect(() => {
+    fetchStatuses();
+  }, [activeEntity]);
+
+  const handleSaveStatus = async (status: StatusData) => {
+    try {
+      setLoading(true);
+      setApiErrors(null);
+      let savedStatus: any;
+
+      if (status.id) {
+        savedStatus = await updateStatusById(status.id, status);
+        setStatuses((prev) =>
+          prev.map((s) => (s.id === savedStatus.id ? savedStatus : s))
+        );
+        showSuccessToast('Status updated successfully');
+      } else {
+        savedStatus = await createStatus({ ...status, entity_type: activeEntity });
+        setStatuses((prev) => [...prev, savedStatus]);
+        showSuccessToast('Status created successfully');
+      }
+
+      setEditingStatus(null);
+      setFormKey('new');
+    } catch (err: any) {
+      const response = err.data.errors;
+      console.log(response);
+      if (response) {
+        setApiErrors(response);
+      } else {
+        showErrorToast(err.message || 'Error while saving status');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteStatus = async (id: number) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'This status will be permanently deleted.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Yes, delete it!',
+    });
+
+    if (!result.isConfirmed) return;
+
+    try {
+      setLoading(true);
+      await deleteStatusById(id);
+      setStatuses((prev) => prev.filter((s) => s.id !== id));
+      if (editingStatus?.id === id) {
+        setEditingStatus(null);
+        setFormKey('new');
+      }
+      showSuccessToast('Status deleted successfully');
+    } catch (err: any) {
+      showErrorToast(err.message || 'Failed to delete status');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      {/* Sidebar - Entities */}
+    <div className="relative flex flex-col lg:flex-row min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      {loading && (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center">
+          <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
       <div className="lg:w-1/5 w-full p-4 border-b lg:border-b-0 lg:border-r dark:border-gray-700 bg-white dark:bg-gray-800">
-        <h3 className="font-bold mb-4">Statuses</h3>
+        <h3 className="font-bold mb-4">Entities</h3>
         <select
           className="block lg:hidden w-full p-2 mb-4 border rounded dark:bg-gray-700 dark:text-white"
           value={activeEntity}
@@ -73,7 +118,7 @@ const StatusPage = () => {
             setFormKey('new');
           }}
         >
-          {['reservation', 'deal', 'order', 'user', 'voucher', 'invoice'].map((entity) => (
+          {ENTITY_TYPES.map((entity) => (
             <option key={entity} value={entity} className="capitalize">
               {entity}s
             </option>
@@ -81,7 +126,7 @@ const StatusPage = () => {
         </select>
 
         <div className="hidden lg:block">
-          {['reservation', 'deal', 'order', 'user', 'voucher', 'invoice'].map((entity) => (
+          {ENTITY_TYPES.map((entity) => (
             <div
               key={entity}
               className={classNames(
@@ -102,27 +147,34 @@ const StatusPage = () => {
         </div>
       </div>
 
-      {/* Status Cards */}
       <div className="lg:w-2/5 w-full p-4 border-b lg:border-b-0 lg:border-r dark:border-gray-700">
-        <h3 className="font-bold mb-3">Status</h3>
+        <h3 className="font-bold mb-3 capitalize">{activeEntity} Statuses</h3>
         <div className="space-y-2">
-          {filteredStatuses.map((status) => (
+          {statuses.map((status) => (
             <div
-              key={status.status_id}
+              key={status.id}
               className="flex items-center justify-between px-4 py-2 bg-white dark:bg-gray-800 border rounded cursor-pointer"
               onClick={() => {
                 setEditingStatus({ ...status });
-                setFormKey(status.status_id.toString());
+                setFormKey(status?.id?.toString() || '');
               }}
             >
               <div className="flex items-center gap-3">
-                <div
-                  className="w-4 h-4 rounded-full"
-                  style={{ backgroundColor: status.color_hex }}
-                ></div>
+                <div className="w-4 h-4 rounded-full" style={{ backgroundColor: status.color_hex }}></div>
                 <span>{status.label}</span>
               </div>
-              <span className="text-sm text-gray-400">{status.code}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-400">{status.code}</span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteStatus(status.id!);
+                  }}
+                  className="text-red-500 hover:text-red-700 text-xs"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
           <button
@@ -143,9 +195,9 @@ const StatusPage = () => {
         </div>
       </div>
 
-      {/* Edit Form */}
+      {/* Modal */}
       <div className="lg:w-2/5 w-full p-4">
-        <h3 className="font-bold mb-3">{editingStatus?.status_id ? 'Edit Status' : 'Add Status'}</h3>
+        <h3 className="font-bold mb-3">{editingStatus?.id ? 'Edit Status' : 'Add Status'}</h3>
         {editingStatus && (
           <StatusModal
             key={formKey}
@@ -153,9 +205,12 @@ const StatusPage = () => {
             onClose={() => {
               setEditingStatus(null);
               setFormKey('new');
+              setApiErrors(null); // clear errors when closing modal
             }}
             onSave={handleSaveStatus}
+            apiErrors={apiErrors}
           />
+
         )}
       </div>
     </div>

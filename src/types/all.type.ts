@@ -27,3 +27,11 @@ export interface OptionGroupData {
   name: string;
   options: OptionData[];
 }
+
+export interface CategoryPayload {
+  parent_id: number | null;
+  name: string;
+  slug: string;
+  category_type: string;
+  sort_order?: number;
+}

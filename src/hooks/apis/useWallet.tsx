@@ -29,7 +29,7 @@ export async function createDeposit({
 }:{amount:any}): Promise<any> {
   try {
    const response = await service.post(`wallet/deposit`,{
-    amount
+    amount,
    });
     return response.data;
   } catch (error: any) {
